@@ -12,7 +12,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.mao.movie.fragment.HotCommentFragment;
 import com.mao.movie.fragment.MainFragment;
 import com.mao.movie.fragment.MyFragment;
-import com.mao.movie.fragment.TabEntity;
+import com.mao.movie.model.TabEntity;
 
 import java.util.ArrayList;
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        mTabLayout.setCurrentTab(1);
+        mTabLayout.setCurrentTab(0);
     }
 
 }

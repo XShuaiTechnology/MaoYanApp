@@ -1,4 +1,4 @@
-package com.mao.movie.fragment;
+package com.mao.movie.model;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 
