@@ -12,7 +12,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.mao.movie.R;
 import com.mao.movie.fragment.CommentFragment;
 import com.mao.movie.fragment.MainFragment;
-import com.mao.movie.fragment.MyFragment;
+import com.mao.movie.fragment.UserFragment;
 import com.mao.movie.model.TabEntity;
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         for (String title : mTitles) {
             mFragments.add(new MainFragment());
             mFragments.add(new CommentFragment());
-            mFragments.add(new MyFragment());
+            mFragments.add(new UserFragment());
         }
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));

@@ -11,7 +11,7 @@ import com.mao.movie.R;
 /**
  * 我的Fragment
  */
-public class MyFragment extends Fragment {
+public class UserFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class MyFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_main, null);
+        View v = inflater.inflate(R.layout.fragment_user, null);
         return v;
     }
 }

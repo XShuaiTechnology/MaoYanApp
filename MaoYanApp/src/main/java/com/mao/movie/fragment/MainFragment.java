@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ public class MainFragment extends Fragment {
     @BindView(R.id.viewPager)
     ViewPager mViewPager;
 
-    private AppCompatActivity mActivity;
     private MyFragmentPagerAdapter mMyFragmentPagerAdapter;
 
     @Override
@@ -37,12 +35,15 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, null);
         ButterKnife.bind(this, view);
 
-        mActivity = (AppCompatActivity) getActivity();
 
-        mMyFragmentPagerAdapter = new MyFragmentPagerAdapter(mActivity.getSupportFragmentManager());
+        mMyFragmentPagerAdapter = new MyFragmentPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(mMyFragmentPagerAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
 
+        mTabLayout.addTab(mTabLayout.newTab().setText("推荐"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("频道"));
+
+        mTabLayout.setupWithViewPager(mViewPager);
+        //mViewPager.setCurrentItem(1);
         return view;
     }
 
