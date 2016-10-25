@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
     // 整个app的背景颜色
-    <color name="app_dark_background">#2e323e</color>
+    <color name="app_background">#2e323e</color>
+    <color name="app_light_background">#434a5a</color>
     <color name="white">#ffffff</color>
+    <color name="blue">#4ab0ff</color>
+    <color name="line_color">#565d6f</color>
 </resources>
