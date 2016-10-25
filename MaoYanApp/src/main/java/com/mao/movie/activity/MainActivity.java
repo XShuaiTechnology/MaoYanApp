@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     private String[] mTitles = {"首页", "热评", "我的"};
-    private int[] mIconUnselectIds = {R.mipmap.tab_home_unselect,
-            R.mipmap.tab_contact_unselect, R.mipmap.tab_more_unselect};
-    private int[] mIconSelectIds = {R.mipmap.tab_home_select,
-            R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
+    private int[] mIconUnselectIds = {R.drawable.ic_tabbar_home_n,
+            R.drawable.ic_tabbar_take_n, R.drawable.ic_tabbar_mine_n};
+    private int[] mIconSelectIds = {R.drawable.ic_tabbar_home_h,
+            R.drawable.ic_tabbar_take_h, R.drawable.ic_tabbar_mine_h};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     @Override
