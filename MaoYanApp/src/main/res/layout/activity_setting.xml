@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/app_background"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:src="@drawable/btn_nav_back_p"/>
+
+        <TextView
+            android:id="@+id/titleHeaderTextView"
+            style="@style/font_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="设置"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_light_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_about_play"
+            style="@style/font_tab_16_color_color_gray"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="top|bottom|center_vertical|fill_vertical|center|fill"
+            android:onClick="btnClickEvent"
+            android:text="播放相关"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_wangluo"
+                style="@style/font_14_color_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:text="允许在移动网络下播放"/>
+
+            <CheckBox
+                android:id="@+id/sv_userInfo_network"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:onClick="btnClickEvent"/>
+
+            <TextView
+                android:id="@+id/tv_distinct"
+                style="@style/font_14_color_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_wangluo"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:text="默认清晰度"/>
+
+            <TextView
+                android:id="@+id/tv_chose_distinct"
+                style="@style/font_14_color_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_wangluo"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:onClick="btnClickEvent"
+                android:text="超清优先"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color"/>
+    </LinearLayout>
+</LinearLayout>
