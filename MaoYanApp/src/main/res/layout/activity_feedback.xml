@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_light_background"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/app_background"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:src="@drawable/btn_nav_back_p"/>
+
+        <TextView
+            style="@style/font_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="意见反馈"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:cardElevation="2dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="5dp"
+        app:cardBackgroundColor="#393f4e"
+        app:cardCornerRadius="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ed_userInfo_advice_mes"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="0x0"
+                android:gravity="top"
+                android:hint="请完整描述问题，以便我们的攻城狮了解情况(^ω^)不少于15字"
+                android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone"
+                android:maxLength="200"
+                android:style="@style/Font_15_color_696b71"
+                android:textColorHint="#999999"/>
+
+            <TextView
+                android:id="@+id/tv_userInfo_advice_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="0/200"
+                android:textColor="#999999"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="5dp"
+        app:cardBackgroundColor="#393f4e"
+        app:cardCornerRadius="1dp"
+        app:cardElevation="2dp">
+
+        <EditText
+            android:id="@+id/ed_userInfo_advice_from"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="0x0"
+            android:gravity="left|right|center_horizontal|fill_horizontal|center|fill|start|end"
+            android:hint="您的联系方式：QQ/手机号（选填）"
+            android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone"
+            android:padding="5dp"
+            android:style="@style/Font_13_color_696b71"
+            android:textColorHint="#999999"/>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/myborder_bg"
+        android:style="@style/font_14_color_white"
+        android:text="提交"/>
+
+
+</LinearLayout>

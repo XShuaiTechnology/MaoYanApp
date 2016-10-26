@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.mao.movie.R;
+import com.mao.movie.activity.FeedbackActivity;
 import com.mao.movie.activity.SettingActivity;
 
 import butterknife.BindView;
@@ -59,10 +60,12 @@ public class UserFragment extends Fragment {
             case R.id.historyLayout:
                 break;
             case R.id.settingLayout:
-                Intent intent = new Intent(getActivity(), SettingActivity.class);
-                startActivity(intent);
+                Intent settingIntent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(settingIntent);
                 break;
             case R.id.feedbackLayout:
+                Intent feedbackIntent = new Intent(getActivity(), FeedbackActivity.class);
+                startActivity(feedbackIntent);
                 break;
         }
     }
