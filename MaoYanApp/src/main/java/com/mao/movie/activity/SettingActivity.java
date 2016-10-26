@@ -30,12 +30,16 @@ public class SettingActivity extends AppCompatActivity {
     TextView mCacheSizeTextView;
     @BindView(R.id.clearCacheLayout)
     RelativeLayout mClearCacheLayout;
+    @BindView(R.id.titleTextView)
+    TextView mTitleTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
+
+        mTitleTextView.setText("设置");
     }
 
     @OnClick({R.id.backButton, R.id.networkLayout, R.id.definitionChangeLayout, R.id.aboutLayout, R.id.cacheSizeTextView, R.id.clearCacheLayout})

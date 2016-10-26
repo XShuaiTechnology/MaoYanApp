@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/app_background">
+                android:background="@color/app_light_background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -48,10 +48,10 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:id="@+id/favoriteLayout"
+                    android:id="@+id/collectionLayout"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@color/app_light_background"
+                    android:background="@color/app_background"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:clickable="true"
+                        android:clickable="false"
                         android:drawableLeft="@drawable/ic_star_n"
                         android:drawablePadding="20dp"
                         android:gravity="center_vertical"
@@ -70,6 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
+                        android:clickable="false"
                         android:src="@drawable/ic_me_right"/>
                 </RelativeLayout>
 
@@ -82,7 +83,7 @@
                     android:id="@+id/historyLayout"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@color/app_light_background"
+                    android:background="@color/app_background"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -90,7 +91,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:clickable="true"
+                        android:clickable="false"
                         android:drawableLeft="@drawable/ic_me_time"
                         android:drawablePadding="20dp"
                         android:gravity="center_vertical"
@@ -101,6 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
+                        android:clickable="false"
                         android:src="@drawable/ic_me_right"/>
                 </RelativeLayout>
 
@@ -111,7 +113,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/app_light_background"
+                    android:background="@color/app_background"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -119,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:clickable="true"
+                        android:clickable="false"
                         android:drawableLeft="@drawable/ic_me_setting"
                         android:drawablePadding="20dp"
                         android:gravity="center_vertical"
@@ -130,6 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
+                        android:clickable="false"
                         android:src="@drawable/ic_me_right"/>
                 </RelativeLayout>
 
@@ -142,7 +147,8 @@
                     android:id="@+id/feedbackLayout"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@color/app_light_background"
+                    android:background="@color/app_background"
+                    android:clickable="true"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -150,7 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:clickable="true"
+                        android:clickable="false"
                         android:drawableLeft="@drawable/ic_me_feedback"
                         android:drawablePadding="20dp"
                         android:gravity="center_vertical"
@@ -161,6 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
+                        android:clickable="false"
                         android:src="@drawable/ic_me_right"/>
                 </RelativeLayout>
 

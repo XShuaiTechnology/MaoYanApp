@@ -10,7 +10,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.mao.movie.R;
-import com.mao.movie.fragment.CommentFragment;
+import com.mao.movie.fragment.HotCommentFragment;
 import com.mao.movie.fragment.MainFragment;
 import com.mao.movie.fragment.UserFragment;
 import com.mao.movie.model.TabEntity;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private void initData() {
         for (String title : mTitles) {
             mFragments.add(new MainFragment());
-            mFragments.add(new CommentFragment());
+            mFragments.add(new HotCommentFragment());
             mFragments.add(new UserFragment());
         }
         for (int i = 0; i < mTitles.length; i++) {

@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.mao.movie.R;
+import com.mao.movie.activity.CollectionActivity;
 import com.mao.movie.activity.FeedbackActivity;
+import com.mao.movie.activity.HistoryActivity;
 import com.mao.movie.activity.SettingActivity;
 
 import butterknife.BindView;
@@ -27,8 +29,8 @@ public class UserFragment extends Fragment {
     ImageView mUserIconTextView;
     @BindView(R.id.loginButton)
     Button mLoginButton;
-    @BindView(R.id.favoriteLayout)
-    RelativeLayout mFavoriteLayout;
+    @BindView(R.id.collectionLayout)
+    RelativeLayout mCollectionLayout;
     @BindView(R.id.historyLayout)
     RelativeLayout mHistoryLayout;
     @BindView(R.id.settingLayout)
@@ -48,24 +50,29 @@ public class UserFragment extends Fragment {
         return v;
     }
 
-    @OnClick({R.id.userIconTextView, R.id.loginButton, R.id.favoriteLayout, R.id.historyLayout, R.id.settingLayout, R.id.feedbackLayout})
+    @OnClick({R.id.userIconTextView, R.id.loginButton, R.id.collectionLayout, R.id.historyLayout, R.id.settingLayout, R.id.feedbackLayout})
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.userIconTextView:
                 break;
             case R.id.loginButton:
                 break;
-            case R.id.favoriteLayout:
+            case R.id.collectionLayout:
+                intent = new Intent(getActivity(), CollectionActivity.class);
+                startActivity(intent);
                 break;
             case R.id.historyLayout:
+                intent = new Intent(getActivity(), HistoryActivity.class);
+                startActivity(intent);
                 break;
             case R.id.settingLayout:
-                Intent settingIntent = new Intent(getActivity(), SettingActivity.class);
-                startActivity(settingIntent);
+                intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
                 break;
             case R.id.feedbackLayout:
-                Intent feedbackIntent = new Intent(getActivity(), FeedbackActivity.class);
-                startActivity(feedbackIntent);
+                intent = new Intent(getActivity(), FeedbackActivity.class);
+                startActivity(intent);
                 break;
         }
     }
