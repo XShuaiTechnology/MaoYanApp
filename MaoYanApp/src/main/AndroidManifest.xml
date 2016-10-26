@@ -22,6 +22,7 @@
         <activity android:name=".activity.FeedbackActivity"/>
         <activity android:name=".activity.HistoryActivity"/>
         <activity android:name=".activity.CollectionActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
     </application>
 
 </manifest>

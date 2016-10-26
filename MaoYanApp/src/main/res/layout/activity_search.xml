@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/app_background"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:src="@drawable/btn_nav_back_p"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/searchLineView"
+                android:layout_alignLeft="@+id/searchLineView"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:hint="搜索你感兴趣的内容"
+                android:imeOptions="actionNone|actionGo|actionSearch|actionNext|actionDone|actionPrevious"
+                android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="16sp"/>
+
+            <View
+                android:id="@+id/searchLineView"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"/>
+
+
+            <ImageButton
+                android:id="@+id/deleteSearchImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/searchEditText"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/searchEditText"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50dp"
+                android:background="#00000000"
+                android:onClick="btnClickEvent"
+                android:src="@drawable/ic_search_close"
+                android:visibility="visible"/>
+
+            <ImageButton
+                android:id="@+id/searchImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:background="#00000000"
+                android:onClick="btnClickEvent"
+                android:src="@drawable/ic_search"
+                android:visibility="visible"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/searchFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_light_background"/>
+
+</LinearLayout>

@@ -34,20 +34,22 @@
                 android:src="@drawable/ic_main_app_loag"/>
 
             <ImageButton
-                android:id="@+id/ibtn_history"
+                android:id="@+id/historyImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="#00000000"
+                android:clickable="true"
                 android:src="@drawable/ic_time_n"/>
 
             <ImageButton
-                android:id="@+id/ibtn_search"
+                android:id="@+id/searchImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:layout_toLeftOf="@+id/ibtn_history"
+                android:layout_toLeftOf="@+id/historyImageButton"
                 android:background="#00000000"
+                android:clickable="true"
                 android:src="@drawable/ic_search"/>
         </RelativeLayout>
 
@@ -56,8 +58,8 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            app:tabMode="fixed"
             app:tabIndicatorColor="#00a1e7"
+            app:tabMode="fixed"
             app:tabSelectedTextColor="#00a1e7"
             app:tabTextColor="@color/white"
             />
