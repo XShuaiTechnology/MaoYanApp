@@ -1,6 +1,5 @@
 package com.mao.movie.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,7 @@ import butterknife.OnClick;
 /**
  * Created by GaoMatrix on 2016/10/26.
  */
-public class FeedbackActivity extends Activity {
+public class FeedbackActivity extends BaseActivity {
 
     @BindView(R.id.backButton)
     ImageButton mBackButton;
@@ -45,6 +44,7 @@ public class FeedbackActivity extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.backButton:
+                finish();
                 break;
             case R.id.feedbackButton:
                 break;

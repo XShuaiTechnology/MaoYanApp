@@ -1,6 +1,5 @@
 package com.mao.movie.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,7 +14,7 @@ import butterknife.OnClick;
 /**
  * Created by GaoMatrix on 2016/10/26.
  */
-public class HistoryActivity extends Activity {
+public class HistoryActivity extends BaseActivity {
 
     @BindView(R.id.backButton)
     ImageButton mBackButton;
@@ -38,6 +37,7 @@ public class HistoryActivity extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.backButton:
+                finish();
                 break;
             case R.id.editTextView:
                 break;

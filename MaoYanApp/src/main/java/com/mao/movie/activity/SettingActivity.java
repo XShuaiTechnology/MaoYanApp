@@ -46,6 +46,7 @@ public class SettingActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.backButton:
+                finish();
                 break;
             case R.id.networkLayout:
                 break;
