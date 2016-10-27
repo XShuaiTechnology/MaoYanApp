@@ -64,7 +64,7 @@
                 android:background="#00000000"
                 android:onClick="btnClickEvent"
                 android:src="@drawable/ic_search_close"
-                android:visibility="visible"/>
+                android:visibility="invisible"/>
 
             <ImageButton
                 android:id="@+id/searchImageButton"
