@@ -10,6 +10,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.mao.movie.R;
+import com.mao.movie.fragment.CollectionArticleFragment;
 import com.mao.movie.fragment.HotCommentFragment;
 import com.mao.movie.fragment.MainFragment;
 import com.mao.movie.fragment.UserFragment;
