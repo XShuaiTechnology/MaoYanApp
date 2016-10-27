@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.mao.movie.R;
-import com.mao.movie.fragment.ChannelFragment;
+import com.mao.movie.fragment.CollectionArticleFragment;
 import com.mao.movie.fragment.CollectionMovieFragment;
 
 import butterknife.BindView;
@@ -84,7 +84,7 @@ public class CollectionActivity extends AppCompatActivity {
                 case 0:
                     return new CollectionMovieFragment();
                 case 1:
-                    return new ChannelFragment();
+                    return new CollectionArticleFragment();
                 default:
                     return new CollectionMovieFragment();
             }
