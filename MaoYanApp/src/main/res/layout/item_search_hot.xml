@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:background="#2e323e"
+              android:minHeight="40dp"
+              android:orientation="horizontal"
+              android:paddingBottom="5dp"
+              android:gravity="center_vertical"
+              android:paddingTop="5dp">
+
+    <RelativeLayout
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp">
+
+        <ImageView
+            android:id="@+id/searchHotNumImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/tv_search_num4"/>
+
+        <TextView
+            android:id="@+id/searchHotNumTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/searchHotNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1.0"
+        android:clickable="true"
+        android:gravity="top|bottom|center_vertical|fill_vertical|center|fill"
+        android:text="吸血鬼日记"
+        android:textColor="#9799a2"
+        android:textSize="14sp"/>
+</LinearLayout>

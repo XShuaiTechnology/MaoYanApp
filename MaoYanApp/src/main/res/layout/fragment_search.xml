@@ -18,7 +18,7 @@
         android:textSize="16sp"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/tv_search_history"
+        android:id="@+id/searchHisttoryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"/>
@@ -29,7 +29,6 @@
         android:background="@color/line_color"/>
 
     <TextView
-        android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top|bottom|center_vertical|fill_vertical|center|fill"
@@ -41,7 +40,7 @@
         android:textSize="16sp"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/tv_search_hotline"
+        android:id="@+id/searchHotRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
