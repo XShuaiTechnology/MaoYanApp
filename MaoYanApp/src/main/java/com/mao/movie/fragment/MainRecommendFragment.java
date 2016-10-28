@@ -16,9 +16,14 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.mao.movie.App;
 import com.mao.movie.R;
+import com.mao.movie.adapter.MainRecommendAdapter;
 import com.mao.movie.model.BannerModel;
+import com.mao.movie.model.Movie;
 import com.mao.movie.retrofit.ApiService;
 import com.mao.movie.retrofit.RetrofitClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +50,7 @@ public class MainRecommendFragment extends Fragment implements BGABanner.OnItemC
     @BindView(R.id.hotRecyclerView)
     RecyclerView mHotRecyclerView;
 
-    private
+    private MainRecommendAdapter mMainRecommendAdapter = new MainRecommendAdapter();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,16 +65,28 @@ public class MainRecommendFragment extends Fragment implements BGABanner.OnItemC
         mSwipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
 
         init();
-
         getBannerData();
+        mockData();
         return view;
     }
 
     private void init() {
         mRecommendRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        mRecommendRecyclerView.setAdapter(mMainRecommendAdapter);
 
         mHotRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mHotRecyclerView.setAdapter(mMainRecommendAdapter);
+    }
 
+    private void mockData() {
+        List<Movie> movieList = new ArrayList<Movie>();
+        movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
+        movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
+        movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
+        movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
+        movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
+        movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
+        mMainRecommendAdapter.setMovieList(movieList);
     }
 
     private void getBannerData() {

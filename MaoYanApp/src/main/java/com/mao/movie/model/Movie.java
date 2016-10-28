@@ -5,23 +5,23 @@ package com.mao.movie.model;
  */
 public class Movie {
     private String imageUrl;
-    private String name;
+    private String title;
     private String rating;
     private String directors;
     private String actors;
     private String time;
 
-    public Movie(String imageUrl, String name, String rating, String directors, String actors, String time) {
+    public Movie(String imageUrl, String title, String rating, String directors, String actors, String time) {
         this.imageUrl = imageUrl;
-        this.name = name;
+        this.title = title;
         this.rating = rating;
         this.directors = directors;
         this.actors = actors;
         this.time = time;
     }
 
-    public Movie(String name, String rating, String directors, String actors, String time) {
-        this.name = name;
+    public Movie(String title, String rating, String directors, String actors, String time) {
+        this.title = title;
         this.rating = rating;
         this.directors = directors;
         this.actors = actors;
@@ -36,12 +36,12 @@ public class Movie {
         this.imageUrl = imageUrl;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getRating() {

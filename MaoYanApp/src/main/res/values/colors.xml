@@ -7,6 +7,7 @@
     // 整个app的背景颜色
     <color name="app_background">#2e323e</color>
     <color name="app_light_background">#434a5a</color>
+    <color name="app_light_2_background">#454c5c</color>
     <color name="white">#ffffff</color>
     <color name="blue">#4ab0ff</color>
     <color name="gray">#9799a2</color>

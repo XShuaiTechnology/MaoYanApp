@@ -35,7 +35,7 @@ public class CollectionMovieAdapter extends RecyclerView.Adapter {
         Movie movie = mMovieList.get(position);
 
         collectionMovieViewHolder.mActorsTextView.setText(movie.getActors());
-        collectionMovieViewHolder.mNameTextView.setText(movie.getName());
+        collectionMovieViewHolder.mNameTextView.setText(movie.getTitle());
         collectionMovieViewHolder.mDirectorsTextView.setText(movie.getDirectors());
         collectionMovieViewHolder.mTimeTextView.setText(movie.getTime());
     }

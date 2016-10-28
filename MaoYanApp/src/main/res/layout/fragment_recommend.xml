@@ -11,76 +11,88 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <cn.bingoogolapple.bgabanner.BGABanner
-                    android:id="@+id/banner"
-                    style="@style/BannerDefaultStyle"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    app:banner_indicatorGravity="bottom|right"
-                    app:banner_transitionEffect="alpha"/>
-            </LinearLayout>
+                    android:layout_height="150dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp">
+                    <cn.bingoogolapple.bgabanner.BGABanner
+                        android:id="@+id/banner"
+                        style="@style/BannerDefaultStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:banner_indicatorGravity="bottom|right"
+                        app:banner_transitionEffect="alpha"/>
+                </LinearLayout>
 
-                <TextView
-                    style="@style/font_16_color_white"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="编辑推荐"/>
-
-                <TextView
-                    android:id="@+id/recommendMoreTextView"
-                    style="@style/font_14_color_white"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="更多 >"/>
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            style="@style/font_16_color_white"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="编辑推荐"/>
+
+                        <TextView
+                            android:id="@+id/recommendMoreTextView"
+                            style="@style/font_14_color_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="更多 >"/>
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recommendRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            style="@style/font_16_color_white"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="全网热播"/>
+
+                        <TextView
+                            android:id="@+id/hotMoreTextView"
+                            style="@style/font_14_color_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="更多 >"/>
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/hotRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
             </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recommendRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp">
-
-                <TextView
-                    style="@style/font_16_color_white"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="全网热播"/>
-
-                <TextView
-                    android:id="@+id/hotMoreTextView"
-                    style="@style/font_14_color_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="更多 >"/>
-            </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/hotRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
+        </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

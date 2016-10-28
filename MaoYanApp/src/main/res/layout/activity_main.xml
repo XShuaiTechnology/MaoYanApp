@@ -1,14 +1,16 @@
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_light_background">
+    android:background="@color/app_light_background"
+    android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
     </FrameLayout>
 
     <com.flyco.tablayout.CommonTabLayout
@@ -29,4 +31,4 @@
         tl:tl_textsize="12sp"
         tl:tl_underline_height="0dp"/>
 
-</RelativeLayout>
+</LinearLayout>

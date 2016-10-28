@@ -31,6 +31,7 @@ public class MainRecommendAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MainRecommendViewHolder mainRecommendViewHolder = (MainRecommendViewHolder) holder;
         Movie movie = mMovieList.get(position);
+        mainRecommendViewHolder.mTitleTextView.setText(movie.getTitle());
     }
 
     @Override
