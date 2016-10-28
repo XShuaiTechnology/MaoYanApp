@@ -11,7 +11,7 @@ import com.mao.movie.R;
 /**
  * 首页的频道Fragment
  */
-public class ChannelFragment extends Fragment {
+public class MainChannelFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

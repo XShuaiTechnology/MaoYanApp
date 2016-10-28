@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.mao.movie.fragment.ChannelFragment;
-import com.mao.movie.fragment.RecommendFragment;
+import com.mao.movie.fragment.MainChannelFragment;
+import com.mao.movie.fragment.MainRecommendFragment;
 
 /**
  * Created by GaoMatrix on 2016/10/25.
@@ -21,11 +21,11 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new RecommendFragment();
+                return new MainRecommendFragment();
             case 1:
-                return new ChannelFragment();
+                return new MainChannelFragment();
             default:
-                return new RecommendFragment();
+                return new MainRecommendFragment();
         }
     }
 

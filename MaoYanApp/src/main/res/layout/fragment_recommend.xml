@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/app_light_background"
               android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -9,10 +11,76 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <cn.bingoogolapple.bgabanner.BGABanner
+                    android:id="@+id/banner"
+                    style="@style/BannerDefaultStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:banner_indicatorGravity="bottom|right"
+                    app:banner_transitionEffect="alpha"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    style="@style/font_16_color_white"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="编辑推荐"/>
+
+                <TextView
+                    android:id="@+id/recommendMoreTextView"
+                    style="@style/font_14_color_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="更多 >"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recommendRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    style="@style/font_16_color_white"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="全网热播"/>
+
+                <TextView
+                    android:id="@+id/hotMoreTextView"
+                    style="@style/font_14_color_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="更多 >"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/hotRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
