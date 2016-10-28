@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_light_background"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageUrlImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/test_adv_banner_1"/>
+
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/font_16_color_white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:text="神盾特工局"/>
+
+</LinearLayout>

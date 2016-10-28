@@ -4,11 +4,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -20,6 +22,7 @@ import com.mao.movie.retrofit.RetrofitClient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,12 +32,20 @@ import retrofit2.Response;
  * 首页的推荐Fragment
  */
 public class MainRecommendFragment extends Fragment implements BGABanner.OnItemClickListener, BGABanner.Adapter {
-    @BindView(R.id.recyclerView)
-    RecyclerView mRecyclerView;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.banner)
     BGABanner mBanner;
+    @BindView(R.id.recommendMoreTextView)
+    TextView mRecommendMoreTextView;
+    @BindView(R.id.recommendRecyclerView)
+    RecyclerView mRecommendRecyclerView;
+    @BindView(R.id.hotMoreTextView)
+    TextView mHotMoreTextView;
+    @BindView(R.id.hotRecyclerView)
+    RecyclerView mHotRecyclerView;
+
+    private
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,11 +59,20 @@ public class MainRecommendFragment extends Fragment implements BGABanner.OnItemC
 
         mSwipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
 
-        initBannerData();
+        init();
+
+        getBannerData();
         return view;
     }
 
-    private void initBannerData() {
+    private void init() {
+        mRecommendRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+        mHotRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+
+    }
+
+    private void getBannerData() {
         RetrofitClient.getClient(ApiService.class).fetchItemsWithItemCount(5).enqueue(new Callback<BannerModel>() {
             @Override
             public void onResponse(Call<BannerModel> call, Response<BannerModel> response) {
@@ -80,5 +100,15 @@ public class MainRecommendFragment extends Fragment implements BGABanner.OnItemC
                 .placeholder(R.drawable.holder)
                 .error(R.drawable.holder)
                 .into((ImageView) view);
+    }
+
+    @OnClick({R.id.recommendMoreTextView, R.id.hotMoreTextView})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.recommendMoreTextView:
+                break;
+            case R.id.hotMoreTextView:
+                break;
+        }
     }
 }
