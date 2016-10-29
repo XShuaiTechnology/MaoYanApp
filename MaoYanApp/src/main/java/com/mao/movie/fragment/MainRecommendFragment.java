@@ -1,5 +1,6 @@
 package com.mao.movie.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.mao.movie.App;
 import com.mao.movie.R;
+import com.mao.movie.activity.EditorRecommendActivity;
+import com.mao.movie.activity.HotPlayActivity;
 import com.mao.movie.adapter.MainRecommendAdapter;
 import com.mao.movie.model.BannerModel;
 import com.mao.movie.model.Movie;
@@ -121,10 +124,15 @@ public class MainRecommendFragment extends Fragment implements BGABanner.OnItemC
 
     @OnClick({R.id.recommendMoreTextView, R.id.hotMoreTextView})
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.recommendMoreTextView:
+                intent = new Intent(getActivity(), EditorRecommendActivity.class);
+                startActivity(intent);
                 break;
             case R.id.hotMoreTextView:
+                intent = new Intent(getActivity(), HotPlayActivity.class);
+                startActivity(intent);
                 break;
         }
     }
