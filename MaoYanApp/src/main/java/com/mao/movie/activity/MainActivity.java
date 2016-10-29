@@ -1,6 +1,7 @@
 package com.mao.movie.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,11 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.mao.movie.R;
-import com.mao.movie.fragment.CollectionArticleFragment;
 import com.mao.movie.fragment.HotCommentFragment;
 import com.mao.movie.fragment.MainFragment;
 import com.mao.movie.fragment.UserFragment;
 import com.mao.movie.model.TabEntity;
+import com.umeng.socialize.UMShareAPI;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_tabbar_take_h, R.drawable.ic_tabbar_mine_h};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
+    public UMShareAPI mShareAPI = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initData();
+
+        mShareAPI = UMShareAPI.get(this);
     }
 
     private void initData() {
@@ -66,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mTabLayout.setCurrentTab(0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mShareAPI.onActivityResult(requestCode, resultCode, data);
     }
 
 }
