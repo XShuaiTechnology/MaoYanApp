@@ -9,4 +9,10 @@ public class PrefConst {
      * 记录是否是第一次启动app，主要用来识别是否显示欢迎界面
      */
     public static final String FIRST_OPEN_APP = "first_open_app";
+
+
+    public static final String WX_USER_INFO = "wx_user_info";
+
+
+
 }

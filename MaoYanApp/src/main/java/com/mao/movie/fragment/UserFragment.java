@@ -10,14 +10,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.gao.android.ui.glide.GlideCircleTransform;
+import com.gao.android.util.PreferencesUtils;
+import com.google.gson.Gson;
 import com.mao.movie.R;
 import com.mao.movie.activity.CollectionActivity;
 import com.mao.movie.activity.FeedbackActivity;
 import com.mao.movie.activity.HistoryActivity;
 import com.mao.movie.activity.MainActivity;
 import com.mao.movie.activity.SettingActivity;
+import com.mao.movie.consts.PrefConst;
+import com.orhanobut.logger.Logger;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
@@ -35,7 +42,7 @@ public class UserFragment extends Fragment {
     private static final String TAG = "UserFragment";
 
     @BindView(R.id.userIconImageView)
-    ImageView userIconImageView;
+    ImageView mUserIconImageView;
     @BindView(R.id.loginButton)
     Button mLoginButton;
     @BindView(R.id.collectionLayout)
@@ -46,6 +53,8 @@ public class UserFragment extends Fragment {
     RelativeLayout mSettingLayout;
     @BindView(R.id.feedbackLayout)
     RelativeLayout mFeedbackLayout;
+    @BindView(R.id.userNameTextView)
+    TextView mUserNameTextView;
 
     private MainActivity mActivity;
 
@@ -60,6 +69,8 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_user, null);
         ButterKnife.bind(this, v);
+        updateUserInfo(mActivity.mWxUserInfo.getProfile_image_url(),
+                mActivity.mWxUserInfo.getScreen_name());
         return v;
     }
 
@@ -70,6 +81,12 @@ public class UserFragment extends Fragment {
             case R.id.userIconImageView:
                 break;
             case R.id.loginButton:
+                if (!mActivity.mIsUserLogin) { // 没有登录，则登录
+                    wxLogin();
+                } else {
+                    wxLogout();
+                    deleteWxUserInfo();
+                }
                 break;
             case R.id.collectionLayout:
                 intent = new Intent(getActivity(), CollectionActivity.class);
@@ -88,6 +105,14 @@ public class UserFragment extends Fragment {
                 startActivity(intent);
                 break;
         }
+    }
+
+    private void deleteWxUserInfo() {
+        mLoginButton.setText("去登陆");
+        mUserIconImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_me_user_no));
+        mUserNameTextView.setVisibility(View.INVISIBLE);
+        PreferencesUtils.putString(mActivity, PrefConst.WX_USER_INFO, "");
+        mActivity.mIsUserLogin = false;
     }
 
 
@@ -152,9 +177,23 @@ public class UserFragment extends Fragment {
                 // country=中国
                 // city=日照
                 // TODO: 2016/10/29 加载头像 
-//                Glide.with(getActivity()).load().in
             }
+            mActivity.mIsUserLogin = true;
+            updateUserInfo(map.get("profile_image_url"), map.get("screen_name"));
 
+            mActivity.mWxUserInfo.setUnionid(map.get("unionid"));
+            mActivity.mWxUserInfo.setProvince(map.get("province"));
+            mActivity.mWxUserInfo.setGender(Integer.parseInt(map.get("gender")));
+            mActivity.mWxUserInfo.setScreen_name(map.get("screen_name"));
+            mActivity.mWxUserInfo.setOpenid(map.get("openid"));
+            mActivity.mWxUserInfo.setLanguage(map.get("language"));
+            mActivity.mWxUserInfo.setProfile_image_url(map.get("profile_image_url"));
+            mActivity.mWxUserInfo.setCountry(map.get("country"));
+            mActivity.mWxUserInfo.setCity(map.get("city"));
+
+            String wxUserInfoJson = new Gson().toJson(mActivity.mWxUserInfo);
+            PreferencesUtils.putString(mActivity, PrefConst.WX_USER_INFO, wxUserInfoJson);
+            mActivity.mIsUserLogin = true;
 
         }
 
@@ -168,6 +207,28 @@ public class UserFragment extends Fragment {
 
         }
     };
+
+
+    /**
+     * 更新界面的头像和名字
+     *
+     * @param profileImageUrl
+     * @param name
+     */
+    private void updateUserInfo(String profileImageUrl, String name) {
+        Logger.d("profileImageUrl: " + profileImageUrl);
+        Logger.d("name: " + name);
+        if (mActivity.mIsUserLogin) {
+            mUserNameTextView.setVisibility(View.VISIBLE);
+            Glide.with(getActivity()).load(profileImageUrl)
+                    .transform(new GlideCircleTransform(mActivity)).into(mUserIconImageView);
+            mUserNameTextView.setText(name);
+            mLoginButton.setText("退出登录");
+        } else {
+            deleteWxUserInfo();
+        }
+
+    }
 
     /**
      * delauth callback interface

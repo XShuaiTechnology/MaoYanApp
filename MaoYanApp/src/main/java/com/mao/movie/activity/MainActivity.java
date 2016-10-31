@@ -5,16 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.FrameLayout;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.gao.android.util.PreferencesUtils;
+import com.google.gson.Gson;
 import com.mao.movie.R;
+import com.mao.movie.consts.PrefConst;
 import com.mao.movie.fragment.HotCommentFragment;
 import com.mao.movie.fragment.MainFragment;
 import com.mao.movie.fragment.UserFragment;
 import com.mao.movie.model.TabEntity;
+import com.mao.movie.model.WxUserInfo;
+import com.orhanobut.logger.Logger;
 import com.umeng.socialize.UMShareAPI;
 
 import java.util.ArrayList;
@@ -38,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     public UMShareAPI mShareAPI = null;
+    public WxUserInfo mWxUserInfo = new WxUserInfo();
+    /**标示用户是否登录*/
+    public boolean mIsUserLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,17 @@ public class MainActivity extends AppCompatActivity {
         initData();
 
         mShareAPI = UMShareAPI.get(this);
+
+        initWxUserInfo();
+    }
+
+    private void initWxUserInfo() {
+        String wxUserInfoJson = PreferencesUtils.getString(this, PrefConst.WX_USER_INFO, "");
+        if (!TextUtils.isEmpty(wxUserInfoJson)) {
+            mWxUserInfo = new Gson().fromJson(wxUserInfoJson, WxUserInfo.class);
+            Logger.d(mWxUserInfo.toString());
+            mIsUserLogin = true;
+        }
     }
 
     private void initData() {
