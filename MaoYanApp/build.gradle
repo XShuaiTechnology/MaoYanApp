@@ -49,4 +49,6 @@ dependencies {
     compile 'cn.bingoogolapple:bga-banner:2.0.9@aar'
     compile files('libs/umeng_social_sdk.jar')
     compile files('libs/SocialSDK_WeiXin_2.jar')
+    // jiecao
+    compile 'fm.jiecao:jiecaovideoplayer:4.8.1'
 }

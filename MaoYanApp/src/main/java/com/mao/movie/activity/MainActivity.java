@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.container)
@@ -45,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     public UMShareAPI mShareAPI = null;
     public WxUserInfo mWxUserInfo = new WxUserInfo();
-    /**标示用户是否登录*/
+    /**
+     * 标示用户是否登录
+     */
     public boolean mIsUserLogin = false;
 
     @Override
@@ -99,4 +102,11 @@ public class MainActivity extends AppCompatActivity {
         mShareAPI.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (JCVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
+    }
 }
