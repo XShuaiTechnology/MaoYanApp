@@ -42,6 +42,7 @@ public class JCVideoPlayerCustom extends JCVideoPlayerStandard {
     public void onClick(View v) {
         super.onClick(v);
         if (v.getId() == R.id.share) {
+            // 弹出信源切换
             Toast.makeText(getContext(), "Whatever the icon means", Toast.LENGTH_SHORT).show();
         }
     }
