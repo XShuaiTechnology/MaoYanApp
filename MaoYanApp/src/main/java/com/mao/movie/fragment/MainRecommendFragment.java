@@ -52,6 +52,7 @@ public class MainRecommendFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         mSwipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
+        mSwipeRefreshLayout.setEnabled(false);
 
         init();
         return view;
