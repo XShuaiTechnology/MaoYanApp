@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.gao.android.rxjavaretrofit.fragment.CacheFragment;
 import com.gao.android.rxjavaretrofit.fragment.ElementaryFragment;
+import com.gao.android.rxjavaretrofit.fragment.MultiRecyclerViewFragment;
 import com.gao.android.rxjavaretrofit.fragment.TokenAdvancedFragment;
 import com.gao.android.rxjavaretrofit.fragment.TokenFragmnet;
 import com.gao.android.rxjavaretrofit.fragment.MapFragment;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
-                    case 0:
+                    case 6:
                         return new ElementaryFragment();
                     case 1:
                         return new MapFragment();
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                         return new TokenAdvancedFragment();
                     case 5:
                         return new CacheFragment();
+                    case 0:
+                        return new MultiRecyclerViewFragment();
                     default:
                         return new ElementaryFragment();
                 }
@@ -65,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public int getCount() {
-                return 6;
+                return 7;
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
                 switch (position) {
-                    case 0:
+                    case 6:
                         return getString(R.string.title_elementary);
                     case 1:
                         return getString(R.string.title_map);
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
                         return getString(R.string.title_token_advanced);
                     case 5:
                         return getString(R.string.title_cache);
+                    case 0:
+                        return "多个RecyclerView";
                     default:
                         return getString(R.string.title_elementary);
                 }

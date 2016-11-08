@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="245dp"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="#cceeeeee"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:text="近期最受期待"
+        android:textColor="@color/black"
+        android:textSize="12sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/expctRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        >
+    </RelativeLayout>
+</LinearLayout>

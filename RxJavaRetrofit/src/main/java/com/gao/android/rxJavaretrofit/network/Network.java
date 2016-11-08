@@ -2,6 +2,7 @@ package com.gao.android.rxjavaretrofit.network;
 
 import com.gao.android.rxjavaretrofit.network.api.FakeApi;
 import com.gao.android.rxjavaretrofit.network.api.GankApi;
+import com.gao.android.rxjavaretrofit.network.api.MultiRecyclerViewApi;
 import com.gao.android.rxjavaretrofit.network.api.ZhuangbiAPi;
 
 import okhttp3.OkHttpClient;
@@ -19,6 +20,7 @@ public class Network {
     private static ZhuangbiAPi sZhuangbiApi;
     private static GankApi sGankApi;
     private static FakeApi sFakeApi;
+    private static MultiRecyclerViewApi sMultiRecyclerViewApi;
     private static Converter.Factory sGsonConverterFactory = GsonConverterFactory.create();
     private static CallAdapter.Factory sRxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
 
@@ -66,6 +68,19 @@ public class Network {
             sFakeApi = new FakeApi();
         }
         return sFakeApi;
+    }
+
+    public static MultiRecyclerViewApi getMultiRecyclerViewApi() {
+        if (sMultiRecyclerViewApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(sOkHttpClient)
+                    .baseUrl("http://api.meituan.com/")
+                    .addConverterFactory(sGsonConverterFactory)
+                    .addCallAdapterFactory(sRxJavaCallAdapterFactory)
+                    .build();
+            sMultiRecyclerViewApi = retrofit.create(MultiRecyclerViewApi.class);
+        }
+        return sMultiRecyclerViewApi;
     }
 
 }
