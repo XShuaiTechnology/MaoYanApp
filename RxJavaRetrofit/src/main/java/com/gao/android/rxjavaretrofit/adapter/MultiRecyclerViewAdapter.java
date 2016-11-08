@@ -138,6 +138,11 @@ public class MultiRecyclerViewAdapter extends RecyclerView.Adapter
         }
     }
 
+    /**
+     * id相同的就不加Header
+     * @param position the position of the view to get the header ID of
+     * @return
+     */
     @Override
     public long getHeaderId(int position) {
         if(mListDataList!=null&&mListDataList.size()>0) {

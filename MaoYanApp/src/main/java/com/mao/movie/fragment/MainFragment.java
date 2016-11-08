@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
         mTabLayout.addTab(mTabLayout.newTab().setText("频道"));
 
         mTabLayout.setupWithViewPager(mViewPager);
-        mViewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(0);
 
         return view;
     }
