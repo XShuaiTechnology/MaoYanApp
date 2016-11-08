@@ -16,14 +16,20 @@ import com.gao.android.rxjavaretrofit.model.USListBean;
 import com.gao.android.rxjavaretrofit.model.WaitExpctBean;
 import com.gao.android.rxjavaretrofit.model.WaitListBean;
 import com.gao.android.util.ListUtils;
+import com.orhanobut.logger.Logger;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by GaoMatrix on 2016/10/22.
  */
-public class MultiRecyclerViewAdapter extends RecyclerView.Adapter {
+public class MultiRecyclerViewAdapter extends RecyclerView.Adapter
+        implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
     //预告片
     public static List<USListBean.DataBean.ComingBean> mRecomDataList = new ArrayList<>();
 
@@ -85,11 +91,13 @@ public class MultiRecyclerViewAdapter extends RecyclerView.Adapter {
             if (mListDataList != null && mListDataList.size() > 0) {
                 // position-3 因为前面有三个item。
                 WaitListBean.DataBean.ComingBean itemData = mListDataList.get(position - 3);
+                Logger.d(itemData);
                 ((ListViewHolder) holder).tv_nm.setText(itemData.getNm());
                 ((ListViewHolder) holder).tv_scm.setText(itemData.getScm());
                 ((ListViewHolder) holder).tv_desc.setText(itemData.getDesc());
                 ((ListViewHolder) holder).tv_wish.setText(itemData.getWish() + "");
 
+                // 这个是每个Item下面还有一个RecyclerView的情况，现在返回数据没有这个，不会走到
                 if (itemData.getHeadLinesVO() != null & itemData.getHeadLinesVO().size() > 0) {
                     ((ListViewHolder) holder).recyclerView.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.VERTICAL, false));
                     ((ListViewHolder) holder).recyclerView.setAdapter(new WaitSpecialAdapter(holder.itemView.getContext(), itemData.getHeadLinesVO()));
@@ -128,6 +136,72 @@ public class MultiRecyclerViewAdapter extends RecyclerView.Adapter {
             }
 
         }
+    }
+
+    @Override
+    public long getHeaderId(int position) {
+        if(mListDataList!=null&&mListDataList.size()>0) {
+//            if (position == 0) {
+//                return -1;
+//            }else if(position==1) {
+//                return -1;
+//            }else if(position==2) {
+//                return -1;
+//            }
+            if (position >= 3) {
+                return parseDate(mListDataList.get(position - 3).getRt());
+            }
+            return -1;
+        }
+        return -1;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_header, parent, false);
+        return new HeaderViewHolder(view);
+    }
+
+    private String testDate;
+    @Override
+    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (getHeaderId(position) == parseDate(mListDataList.get(position - 3).getRt())) {
+            commonTitle.setText(testDate);//
+        } else if (getHeaderId(position) == -1) {// 不是底部的Adapter就不显示
+            commonTitle.setVisibility(View.GONE);
+        }
+//        else if(getHeaderId(position)==-2) {
+//            commonTitle.setVisibility(View.VISIBLE);
+//            commonTitle.setText("预告片推荐11");
+//        }else if(getHeaderId(position)==-3) {
+//            commonTitle.setVisibility(View.VISIBLE);
+//            commonTitle.setText("近期最受期待22");
+//        }
+    }
+
+    private TextView commonTitle;
+    private class HeaderViewHolder extends RecyclerView.ViewHolder {
+        public HeaderViewHolder(View view) {
+            super(view);
+            commonTitle = (TextView) view;
+        }
+    }
+
+    private int parseDate(String strDate) {
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("MM月dd日 E");
+        SimpleDateFormat sdf3 = new SimpleDateFormat("yyyyMMdd");
+        Date date = null;//提取格式中的日期
+        try {
+            date = sdf1.parse(strDate);
+            String strDate1 = sdf3.format(date);
+            int intDate = Integer.parseInt(strDate1);
+            testDate = sdf2.format(date);
+            return intDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @Override

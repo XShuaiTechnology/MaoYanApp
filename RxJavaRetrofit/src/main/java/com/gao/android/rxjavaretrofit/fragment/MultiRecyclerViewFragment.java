@@ -17,6 +17,7 @@ import com.gao.android.rxjavaretrofit.model.WaitExpctBean;
 import com.gao.android.rxjavaretrofit.model.WaitListBean;
 import com.gao.android.rxjavaretrofit.network.Network;
 import com.orhanobut.logger.Logger;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +40,9 @@ public class MultiRecyclerViewFragment extends Fragment {
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
-    private MultiRecyclerViewAdapter mAdapter;
     private Subscription mSubscription;
+    private MultiRecyclerViewAdapter mAdapter;
+    private StickyRecyclerHeadersDecoration mStickyRecyclerHeadersDecoration;
 
     //预告片
     public static List<USListBean.DataBean.ComingBean> mRecomData = new ArrayList<>();
@@ -68,6 +70,15 @@ public class MultiRecyclerViewFragment extends Fragment {
             mSwipeRefreshLayout.setRefreshing(false);
             mAdapter = new MultiRecyclerViewAdapter(mRecomData, mExpectData, mListData);
             mRecyclerView.setAdapter(mAdapter);
+            mStickyRecyclerHeadersDecoration = new StickyRecyclerHeadersDecoration(mAdapter);
+            mRecyclerView.addItemDecoration(mStickyRecyclerHeadersDecoration);
+            mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver(){
+                @Override
+                public void onChanged() {
+                    //刷新数据的时候回刷新头部
+                    mStickyRecyclerHeadersDecoration.invalidateHeaders();
+                }
+            });
             Logger.d(mRecomData);
             Logger.d(mExpectData);
             Logger.d(mListData);
