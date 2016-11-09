@@ -16,6 +16,7 @@ import com.mao.movie.model.BannerModel;
 import com.mao.movie.model.Movie;
 import com.mao.movie.retrofit.ApiService;
 import com.mao.movie.retrofit.RetrofitClient;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class MainRecommendMultiRecyclerViewAdapter extends RecyclerView.Adapter
         mBannerModel = bannerModel;
         mRecommendAdapter.setMovieList(mRecommendMovieList);
         mHotAdapter.setMovieList(mHotMovieList);
+        Logger.d("notifyDataSetChanged");
         notifyDataSetChanged();
     }
 
@@ -123,7 +125,7 @@ public class MainRecommendMultiRecyclerViewAdapter extends RecyclerView.Adapter
                 @Override
                 public void onResponse(Call<BannerModel> call, Response<BannerModel> response) {
                     BannerModel bannerModel = response.body();
-                    mBanner.setData(mBannerModel.imgs, mBannerModel.tips);
+                    mBanner.setData(bannerModel.imgs, bannerModel.tips);
                     mBanner.startAutoPlay();
                 }
 
@@ -144,6 +146,7 @@ public class MainRecommendMultiRecyclerViewAdapter extends RecyclerView.Adapter
         RecommendViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            mRecommendRecyclerView.setFocusable(false);
             mRecommendRecyclerView.setLayoutManager(new GridLayoutManager(App.getInstance(), 2));
             mRecommendRecyclerView.setAdapter(mRecommendAdapter);
         }
@@ -158,6 +161,7 @@ public class MainRecommendMultiRecyclerViewAdapter extends RecyclerView.Adapter
         HotViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            mHotRecyclerView.setFocusable(false);
             mHotRecyclerView.setLayoutManager(new GridLayoutManager(App.getInstance(), 3));
             mHotRecyclerView.setAdapter(mHotAdapter);
         }

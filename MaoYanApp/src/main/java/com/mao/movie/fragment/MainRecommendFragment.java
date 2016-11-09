@@ -53,6 +53,7 @@ public class MainRecommendFragment extends Fragment {
 
         mSwipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
         mSwipeRefreshLayout.setEnabled(false);
+//        mRecyclerView.setFocusable(false);
 
         init();
         return view;

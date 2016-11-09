@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.mao.movie.R;
 import com.mao.movie.model.Movie;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class MainRecommendAdapter extends RecyclerView.Adapter {
 
     public void setMovieList(List<Movie> movieList) {
         this.mMovieList = movieList;
+        Logger.d("notifyDataSetChanged");
         notifyDataSetChanged();
     }
 
