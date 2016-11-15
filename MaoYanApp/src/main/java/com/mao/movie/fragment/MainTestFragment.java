@@ -1,5 +1,6 @@
 package com.mao.movie.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -18,6 +19,7 @@ import com.mao.movie.adapter.VideoPlayerTestAdapter;
 import com.mao.movie.model.RecommendMovie;
 import com.mao.movie.retrofit.ApiService;
 import com.mao.movie.retrofit.RetrofitClient;
+import com.mao.movie.util.OpenMovie;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -66,29 +69,50 @@ public class MainTestFragment extends Fragment {
             public void onClick(View view, int position) {
                 Logger.d("click---------");
                 Toast.makeText(getActivity(), "click" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = OpenMovie.getInstance().getIntent(getActivity(), mMovieList.get(position));
+                startActivity(intent);
             }
         });
 
         RetrofitClient.getClient(ApiService.class).getRecommendMovie()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<RecommendMovie>() {
+                .doOnNext(new Action1<RecommendMovie>() {
                     @Override
-                    public void onCompleted() {
-
+                    public void call(RecommendMovie recommendMovie) {
+                        for (RecommendMovie.RowsBean bean : recommendMovie.getRows()) {
+                            if (null != bean.getIntentExtras() && bean.getIntentExtras().size() > 0) {
+                                StringBuilder sb = new StringBuilder();
+                                for (String string : bean.getIntentExtras()) {
+                                    sb.append(string + OpenMovie.MOVIE_INFO_SEPARATOR);
+                                }
+                                String str = sb.toString();
+                                if (str.length() > 0) {
+                                    str = str.substring(0, str.length() - 3);
+                                }
+                                bean.setIntentExtrasStr(str);
+                            }
+                        }
                     }
+                })
+               .subscribe(new Subscriber<RecommendMovie>() {
+                   @Override
+                   public void onCompleted() {
 
-                    @Override
-                    public void onError(Throwable e) {
+                   }
 
-                    }
+                   @Override
+                   public void onError(Throwable e) {
 
-                    @Override
-                    public void onNext(RecommendMovie recommendMovie) {
-                        mMovieList = recommendMovie.getRows();
-                        mAdapter.setData(mMovieList);
-                    }
-                });
+                   }
+
+                   @Override
+                   public void onNext(RecommendMovie recommendMovie) {
+                       mMovieList = recommendMovie.getRows();
+                       mAdapter.setData(mMovieList);
+                   }
+               });
+
 
         /*mRecyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
             @Override

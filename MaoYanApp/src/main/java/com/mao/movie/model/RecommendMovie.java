@@ -250,5 +250,14 @@ public class RecommendMovie {
         public void setIntentExtras(List<String> intentExtras) {
             this.intentExtras = intentExtras;
         }
+
+        private String intentExtrasStr;
+        public String getIntentExtrasStr() {
+            return intentExtrasStr;
+        }
+
+        public void setIntentExtrasStr(String intentExtrasStr) {
+            this.intentExtrasStr = intentExtrasStr;
+        }
     }
 }

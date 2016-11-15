@@ -3,6 +3,8 @@ package com.mao.movie.retrofit;
 import com.mao.movie.model.BannerModel;
 import com.mao.movie.model.RecommendMovie;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -24,6 +26,6 @@ public interface ApiService {
     /*@GET("{page}")
     Call<HttpResponseMeizi<List<Meizi>>> getMeizi(@Path("page") int page);*/
 
-    @GET("http://www.jtsimg.com:8080/ts_launcher/recommend/newtuijian.action?method=listJX&pageSize=1188&pageNum=1&pubdate=20161111021653")
+    @GET("http://www.jtsimg.com:8080/ts_launcher/recommend/newtuijian.action?method=listJX&pageSize=1188&pageNum=1")
     Observable<RecommendMovie> getRecommendMovie();
 }

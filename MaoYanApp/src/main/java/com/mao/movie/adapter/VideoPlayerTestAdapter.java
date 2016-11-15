@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mao.movie.R;
@@ -72,7 +73,7 @@ public class VideoPlayerTestAdapter extends RecyclerView.Adapter<VideoPlayerTest
             imageView = (ImageView) itemView.findViewById(R.id.videoPlayer);
             rootView = (CardView) itemView.findViewById(R.id.rootView);
             textView = (TextView) itemView.findViewById(R.id.titleTextView);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Logger.d("onClick");
