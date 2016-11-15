@@ -50,6 +50,7 @@ public class MainFragment extends Fragment {
 
         mTabLayout.addTab(mTabLayout.newTab().setText("推荐"));
         mTabLayout.addTab(mTabLayout.newTab().setText("频道"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("测试"));
 
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.setCurrentItem(0);

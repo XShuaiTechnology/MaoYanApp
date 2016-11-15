@@ -6,12 +6,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.mao.movie.fragment.MainChannelFragment;
 import com.mao.movie.fragment.MainRecommendFragment;
+import com.mao.movie.fragment.MainTestFragment;
 
 /**
  * Created by GaoMatrix on 2016/10/25.
  */
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-    private String[] mTitles = new String[]{"推荐", "频道"};
+    private String[] mTitles = new String[]{"推荐", "频道", "测试"};
 
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -24,6 +25,8 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
                 return new MainRecommendFragment();
             case 1:
                 return new MainChannelFragment();
+            case 2:
+                return new MainTestFragment();
             default:
                 return new MainRecommendFragment();
         }

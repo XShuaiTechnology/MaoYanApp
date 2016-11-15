@@ -6,7 +6,7 @@ package com.mao.movie.consts;
 public class VideoConstant {
 
     public static String[] videoUrls = {
-            "http://video.jiecao.fm/5/1/%E8%87%AA%E5%8F%96%E5%85%B6%E8%BE%B1.mp4",
+            "http://58.220.11.147/w/3432d7e84618b8e9b0cafd9c961a18cd.mp4?type=client.vip&k=b204dda86a9093cdebfd2b412728d9bb-6e77-1478787324&bppcataid=94",
             "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4",
             "http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4",
             "http://video.jiecao.fm/8/17/bGQS3BQQWUYrlzP1K4Tg4Q__.mp4",
