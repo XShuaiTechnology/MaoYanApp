@@ -53,4 +53,8 @@ dependencies {
     //compile 'fm.jiecao:jiecaovideoplayer:4.8.1'
     compile project(':GAndroidCommon')
     compile project(':jcvideoplayer-lib')
+    // 极光推送
+    compile files('libs/jpush-android-2.1.9.jar')
+    // zxing
+    compile 'cn.yipianfengye.android:zxing-library:2.0'
 }

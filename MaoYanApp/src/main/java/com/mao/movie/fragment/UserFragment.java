@@ -22,6 +22,7 @@ import com.mao.movie.activity.CollectionActivity;
 import com.mao.movie.activity.FeedbackActivity;
 import com.mao.movie.activity.HistoryActivity;
 import com.mao.movie.activity.MainActivity;
+import com.mao.movie.activity.ScanActivity;
 import com.mao.movie.activity.SettingActivity;
 import com.mao.movie.consts.PrefConst;
 import com.orhanobut.logger.Logger;
@@ -101,7 +102,10 @@ public class UserFragment extends Fragment {
                 startActivity(intent);
                 break;
             case R.id.feedbackLayout:
-                intent = new Intent(getActivity(), FeedbackActivity.class);
+                /*intent = new Intent(getActivity(), FeedbackActivity.class);
+                startActivity(intent);*/
+                // TODO: 2016/11/15 暂时写在这里
+                intent = new Intent(getActivity(), ScanActivity.class);
                 startActivity(intent);
                 break;
         }
