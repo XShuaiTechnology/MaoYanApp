@@ -2,45 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true">
+                android:fitsSystemWindows="true"
+                android:gravity="center">
 
-    <EditText
-        android:id="@+id/QRContentEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:minLines="3"
-        />
-
-    <Button
-        android:id="@+id/makeQRLogoButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/QRContentEditText"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:text="生成logo二维码图片"
-        />
-
-    <Button
-        android:id="@+id/makeQRButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/makeQRLogoButton"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:text="生成普通二维码图片"
-        />
 
     <ImageView
         android:id="@+id/QRContentImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/makeQRLogoButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         />

@@ -10,6 +10,8 @@ import android.util.Log;
 import com.gao.android.util.PreferencesUtils;
 import com.mao.movie.App;
 import com.mao.movie.activity.MainActivity;
+import com.mao.movie.service.PushMovieService;
+import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +33,6 @@ public class JPushReceiver extends BroadcastReceiver {
         Bundle bundle = intent.getExtras();
         Log.d(TAG, "[MyReceiver] onReceive - " + intent.getAction()
                 + ", extras: " + printBundle(bundle));
-
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
             String regId = bundle
                     .getString(JPushInterface.EXTRA_REGISTRATION_ID);
@@ -124,13 +125,13 @@ public class JPushReceiver extends BroadcastReceiver {
     private void processCustomMessage(Context context, Bundle bundle) {
         String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
         String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-        Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
-        msgIntent.putExtra(MainActivity.KEY_MESSAGE, message);
+        Intent msgIntent = new Intent(PushMovieService.MESSAGE_RECEIVED_ACTION);
+        msgIntent.putExtra(PushMovieService.KEY_MESSAGE, message);
         if (!TextUtils.isEmpty(extras)) {
             try {
                 JSONObject extraJson = new JSONObject(extras);
                 if (null != extraJson && extraJson.length() > 0) {
-                    msgIntent.putExtra(MainActivity.KEY_EXTRAS, extras);
+                    msgIntent.putExtra(PushMovieService.KEY_EXTRAS, extras);
                 }
             } catch (JSONException e) {
 
