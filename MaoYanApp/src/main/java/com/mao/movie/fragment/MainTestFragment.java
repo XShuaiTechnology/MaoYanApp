@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.gao.android.util.NetWorkUtils;
+import com.mao.movie.App;
 import com.mao.movie.R;
 import com.mao.movie.adapter.VideoPlayerAdapter;
 import com.mao.movie.adapter.VideoPlayerTestAdapter;
@@ -29,6 +30,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -70,7 +75,20 @@ public class MainTestFragment extends Fragment {
                 Logger.d("click---------");
                 Toast.makeText(getActivity(), "click" + position, Toast.LENGTH_SHORT).show();
                 Intent intent = OpenMovie.getInstance().getIntent(getActivity(), mMovieList.get(position));
-                startActivity(intent);
+                // startActivity(intent);
+                RetrofitClient.getClient(ApiService.class)
+                        .pushMovieToDevice(App.getInstance().regId, intent.toUri(0))
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                Logger.d(response);
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Logger.d("onFailure");
+                            }
+                        });
             }
         });
 

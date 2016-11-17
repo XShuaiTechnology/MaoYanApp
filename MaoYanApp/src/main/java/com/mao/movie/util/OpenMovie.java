@@ -10,6 +10,7 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.mao.movie.model.RecommendMovie;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,6 +139,8 @@ public class OpenMovie {
             intent.putExtra("extra_partner", "xiaoshuai");
         }
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Logger.d(intent);
+        Logger.d(intent.toUri(0));
         return intent;
     }
 

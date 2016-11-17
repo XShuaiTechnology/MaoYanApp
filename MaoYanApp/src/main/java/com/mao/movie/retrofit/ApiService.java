@@ -5,8 +5,13 @@ import com.mao.movie.model.RecommendMovie;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -28,4 +33,8 @@ public interface ApiService {
 
     @GET("http://www.jtsimg.com:8080/ts_launcher/recommend/newtuijian.action?method=listJX&pageSize=1188&pageNum=1")
     Observable<RecommendMovie> getRecommendMovie();
+
+    @FormUrlEncoded
+    @POST("http://192.168.12.12:80/MaoYanServer/index.php/admin/message/push")
+    Call<ResponseBody> pushMovieToDevice(@Field("device_reg_id") String device_reg_id, @Field("message") String message);
 }
