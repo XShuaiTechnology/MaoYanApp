@@ -2,20 +2,19 @@ package com.mao.movie.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.gao.android.util.NetWorkUtils;
 import com.mao.movie.App;
 import com.mao.movie.R;
-import com.mao.movie.adapter.VideoPlayerAdapter;
+import com.mao.movie.activity.MovieDetailActivity;
 import com.mao.movie.adapter.VideoPlayerTestAdapter;
 import com.mao.movie.model.RecommendMovie;
 import com.mao.movie.retrofit.ApiService;
@@ -28,13 +27,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -49,6 +45,8 @@ public class MainTestFragment extends Fragment {
 
     VideoPlayerTestAdapter mAdapter = new VideoPlayerTestAdapter();
     List<RecommendMovie.RowsBean> mMovieList = new ArrayList<>();
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     @Override
@@ -65,17 +63,30 @@ public class MainTestFragment extends Fragment {
         return view;
     }
 
+
     private void init() {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mRecyclerView.setAdapter(mAdapter);
+        mSwipeRefreshLayout.setRefreshing(true);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
 
         mAdapter.setClickListener(new VideoPlayerTestAdapter.OnItemClickListener() {
             @Override
             public void onClick(View view, int position) {
                 Logger.d("click---------");
                 Toast.makeText(getActivity(), "click" + position, Toast.LENGTH_SHORT).show();
-                Intent intent = OpenMovie.getInstance().getIntent(getActivity(), mMovieList.get(position));
+                Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+                intent.putExtra(MovieDetailActivity.MOVIE_DATA, mMovieList.get(position));
+                startActivity(intent);
+
+                // Intent intent = OpenMovie.getInstance().getIntent(getActivity(), mMovieList.get(position));
                 // startActivity(intent);
+
                 RetrofitClient.getClient(ApiService.class)
                         .pushMovieToDevice(App.getInstance().regId, intent.toUri(0))
                         .enqueue(new Callback<ResponseBody>() {
@@ -92,6 +103,10 @@ public class MainTestFragment extends Fragment {
             }
         });
 
+        getData();
+    }
+
+    private void getData() {
         RetrofitClient.getClient(ApiService.class).getRecommendMovie()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -113,47 +128,24 @@ public class MainTestFragment extends Fragment {
                         }
                     }
                 })
-               .subscribe(new Subscriber<RecommendMovie>() {
-                   @Override
-                   public void onCompleted() {
+                .subscribe(new Subscriber<RecommendMovie>() {
+                    @Override
+                    public void onCompleted() {
 
-                   }
-
-                   @Override
-                   public void onError(Throwable e) {
-
-                   }
-
-                   @Override
-                   public void onNext(RecommendMovie recommendMovie) {
-                       mMovieList = recommendMovie.getRows();
-                       mAdapter.setData(mMovieList);
-                   }
-               });
-
-
-        /*mRecyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
-            @Override
-            public void onChildViewAttachedToWindow(View view) {
-
-            }
-
-            @Override
-            public void onChildViewDetachedFromWindow(View view) {
-                if (JCVideoPlayerManager.getFirst() != null) {
-                    JCVideoPlayer videoPlayer = (JCVideoPlayer) JCVideoPlayerManager.getFirst();
-                    if (((ViewGroup) view).indexOfChild(videoPlayer) != -1 && videoPlayer.currentState == JCVideoPlayer.CURRENT_STATE_PLAYING) {
-                        JCVideoPlayer.releaseAllVideos();
                     }
-                }
-            }
-        });*/
-    }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        JCVideoPlayer.releaseAllVideos();
+                    @Override
+                    public void onError(Throwable e) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+
+                    @Override
+                    public void onNext(RecommendMovie recommendMovie) {
+                        mMovieList = recommendMovie.getRows();
+                        mAdapter.setData(mMovieList);
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                });
     }
 
 }

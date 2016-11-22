@@ -139,6 +139,16 @@ public class UserFragment extends Fragment {
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
             if (data != null) {
+                Logger.d(data);
+                //{
+                //expires_in=7200,
+                // openid=oCDCXwzpEnl_gbQKTQutfptDRdoI,
+                // refresh_token=rsiCbHdkpFOu-jSABprwC4flLlTKro11XddHddzBBZ7ZJxGCEVagIwbfJdsrgIlH1vIYV6wKpKHnU2v0tMFkiwagRZypFnrmpOvxvkz2JMU,
+                // scope=snsapi_userinfo,
+                // access_token=zO1NivAT_dWQ5CKvUZaVBbrerZN4KciaeoBVSg0lPRf0QK-OXhPmtQNo_czeE0nRNOoTO0ZbMQIJ-_61f1Esodch5-OociMIGNwo0mn402Q,
+                // unionid=oGfXpwD9TnQStXhPeR-0aY1rQ48Q
+                // }
+
                 Log.d(TAG, "onComplete: platform: " + platform);
                 Log.d(TAG, "onComplete: action: " + action);
                 Log.d(TAG, "onComplete: data: " + data.toString());
@@ -198,7 +208,8 @@ public class UserFragment extends Fragment {
             String wxUserInfoJson = new Gson().toJson(mActivity.mWxUserInfo);
             PreferencesUtils.putString(mActivity, PrefConst.WX_USER_INFO, wxUserInfoJson);
             mActivity.mIsUserLogin = true;
-
+            // TODO: 2016/11/21
+            // 首先去自己服务器根据opentid,unionid,access_token去换取自己的token，
         }
 
         @Override

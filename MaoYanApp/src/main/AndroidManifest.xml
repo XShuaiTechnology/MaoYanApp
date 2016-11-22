@@ -61,6 +61,7 @@
         <activity android:name=".activity.HotPlayActivity"/>
         <activity android:name=".activity.EditorRecommendActivity"/>
         <activity android:name=".activity.ScanActivity"/>
+        <activity android:name=".activity.MovieDetailActivity"/>
         <!--微信-->
         <activity
             android:name=".wxapi.WXEntryActivity"

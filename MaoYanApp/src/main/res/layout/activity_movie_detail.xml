@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_light_background"
+              android:orientation="vertical">
+
+    <com.mao.movie.ui.ijkplayer.JCVideoPlayerCustom
+        android:id="@+id/videoPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/font_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简介"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/coverImageView"
+                android:layout_width="105dp"
+                android:layout_height="168dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    style="@style/font_16_color_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="寒战2"/>
+
+                <TextView
+                    android:id="@+id/labelTextView"
+                    style="@style/font_16_color_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2016/大陆 香港"/>
+
+                <TextView
+                    android:id="@+id/directorTextView"
+                    style="@style/font_16_color_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="导演：陆建清 梁乐民"/>
+
+                <TextView
+                    android:id="@+id/actorTextView"
+                    style="@style/font_16_color_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="主演：郭富城，梁家辉，杨采妮"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ratingTextView"
+                style="@style/font_16_color_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7.2"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            style="@style/font_16_color_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="《寒战II》是2016年香港剧情片，为2012年电影《寒战》之续集，前作导演陆剑青和梁乐民执导，由郭富城、梁家辉、杨采妮及文咏珊领衔主演；周润发、彭于晏、李治廷及杨祐宁特别演出。2016年7月8日在香港、中国内地、澳门、马来西亚、台湾、澳洲及新西兰等地区率先上映。第53届金马奖三项提名。"/>
+    </LinearLayout>
+</LinearLayout>

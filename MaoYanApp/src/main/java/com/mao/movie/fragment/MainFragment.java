@@ -47,6 +47,7 @@ public class MainFragment extends Fragment {
 
         mMyFragmentPagerAdapter = new MyFragmentPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(mMyFragmentPagerAdapter);
+        mViewPager.setOffscreenPageLimit(2);
 
         mTabLayout.addTab(mTabLayout.newTab().setText("推荐"));
         mTabLayout.addTab(mTabLayout.newTab().setText("频道"));
