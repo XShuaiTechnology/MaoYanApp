@@ -1,0 +1,19 @@
+<resources>
+
+    <color name="blue1">#004070</color>
+    <color name="blue2">#006090</color>
+    <color name="blue3">#0080B0</color>
+    <color name="dark">#7e7d7d</color>
+    <color name="activity_title_line">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="top100_2_left_text_color">#3bb7e9</color>
+
+    <color name="title_white">#FFFFFFFF</color>
+    <color name="title_pale_white">#BBFFFFFF</color>
+    <color name="title_half_white">#55FFFFFF</color>
+    <color name="update_launcher">#3ff3cd</color>
+    <color name="update_launcher2">#1eaa92</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="half_transparent">#80000000</color>
+</resources>

@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:ellipsize="marquee"
+        android:fadingEdge="none"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/title_white"
+        android:text=""
+        android:textSize="22sp" />
+
+</RelativeLayout>
