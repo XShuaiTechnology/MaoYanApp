@@ -1,1 +1,1 @@
-include ':app', ':BottomTablayout', ':ToolBar', ':swipebacklayoutlibrary', ':UmengShare', ':Update', ':GAndroidCommon', ':RxJavaRetrofit', ':MaoYanApp', ':jcvideoplayer-lib', ':sticky-headers-recyclerview', ':MaoYanClient', ':VideoPlayerLibrary'
+include ':app', ':BottomTablayout', ':ToolBar', ':swipebacklayoutlibrary', ':UmengShare', ':Update', ':GAndroidCommon', ':RxJavaRetrofit', ':MaoYanApp', ':sticky-headers-recyclerview', ':MaoYanClient', ':VideoPlayerLibrary'

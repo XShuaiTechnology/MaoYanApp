@@ -34,6 +34,7 @@ import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -110,6 +111,16 @@ public class MainTestFragment extends Fragment {
         RetrofitClient.getClient(ApiService.class).getRecommendMovie()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                /*.filter(new Func1<RecommendMovie, Boolean>() {
+                    @Override
+                    public Boolean call(RecommendMovie recommendMovie) {
+                        for (RecommendMovie.RowsBean bean : recommendMovie.getRows()) {
+                            if (bean.getIntentData().startsWith("/apps/")) {
+                                return false;
+                            }
+                        }
+                    }
+                })*/
                 .doOnNext(new Action1<RecommendMovie>() {
                     @Override
                     public void call(RecommendMovie recommendMovie) {

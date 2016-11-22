@@ -50,11 +50,14 @@ dependencies {
     compile files('libs/umeng_social_sdk.jar')
     compile files('libs/SocialSDK_WeiXin_2.jar')
     // jiecao
-    //compile 'fm.jiecao:jiecaovideoplayer:4.8.1'
+    compile 'fm.jiecao:jiecaovideoplayer:4.8.3'
     compile project(':GAndroidCommon')
-    compile project(':jcvideoplayer-lib')
+    //compile project(':jcvideoplayer-lib')
     // 极光推送
     compile files('libs/jpush-android-2.1.9.jar')
     // zxing
     compile 'cn.yipianfengye.android:zxing-library:2.0'
+    compile files('libs/jsoup-1.8.3.jar')
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile files('libs/xutils.jar')
 }

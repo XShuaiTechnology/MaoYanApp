@@ -14,6 +14,8 @@ public class App extends Application{
     public String regId = "";
     private static App sInstance;
 
+    public String analysisUrl = "";
+
     @Override
     public void onCreate() {
         super.onCreate();
