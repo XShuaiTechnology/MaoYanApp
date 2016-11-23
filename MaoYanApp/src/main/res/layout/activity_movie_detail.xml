@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/app_light_background"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/app_light_background"
+    >
 
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
         android:id="@+id/videoPlayer"
@@ -13,20 +13,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/videoPlayer"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
         <TextView
-            style="@style/font_title"
+            style="@style/font_18_color_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="简介"/>
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -42,28 +44,29 @@
 
                 <TextView
                     android:id="@+id/titleTextView"
-                    style="@style/font_16_color_white"
+                    style="@style/font_16_color_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:text="寒战2"/>
 
                 <TextView
                     android:id="@+id/labelTextView"
-                    style="@style/font_16_color_white"
+                    style="@style/font_16_color_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2016/大陆 香港"/>
 
                 <TextView
                     android:id="@+id/directorTextView"
-                    style="@style/font_16_color_white"
+                    style="@style/font_16_color_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="导演：陆建清 梁乐民"/>
 
                 <TextView
                     android:id="@+id/actorTextView"
-                    style="@style/font_16_color_white"
+                    style="@style/font_16_color_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="主演：郭富城，梁家辉，杨采妮"/>
@@ -72,7 +75,7 @@
 
             <TextView
                 android:id="@+id/ratingTextView"
-                style="@style/font_16_color_white"
+                style="@style/font_16_color_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="7.2"/>
@@ -80,10 +83,81 @@
 
         <TextView
             android:id="@+id/descriptionTextView"
-            style="@style/font_16_color_white"
+            style="@style/font_14_color_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="《寒战II》是2016年香港剧情片，为2012年电影《寒战》之续集，前作导演陆剑青和梁乐民执导，由郭富城、梁家辉、杨采妮及文咏珊领衔主演；周润发、彭于晏、李治廷及杨祐宁特别演出。2016年7月8日在香港、中国内地、澳门、马来西亚、台湾、澳洲及新西兰等地区率先上映。第53届金马奖三项提名。"/>
     </LinearLayout>
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_background">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shoucang_selector"/>
+
+            <TextView
+                style="@style/font_14_color_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="收藏"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/huifu_selector"/>
+
+            <TextView
+                style="@style/font_14_color_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="评论（121）"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/share_selector"/>
+
+            <TextView
+                style="@style/font_14_color_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="分享"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

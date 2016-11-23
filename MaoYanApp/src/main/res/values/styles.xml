@@ -31,6 +31,16 @@
         <item name="android:textColor">@color/gray</item>
     </style>
 
+    <style name="font_16_color_gray">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="font_18_color_gray">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
     <style name="font_16_color_white">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
