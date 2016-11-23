@@ -1,13 +1,14 @@
 package com.mao.movie.activity;
 
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +19,16 @@ import com.lidroid.xutils.db.sqlite.Selector;
 import com.mao.movie.App;
 import com.mao.movie.R;
 import com.mao.movie.model.BdPcsToken;
+import com.mao.movie.model.Defaultcontent;
 import com.mao.movie.model.RecommendMovie;
 import com.mao.movie.util.DBUtils;
 import com.mao.movie.util.VideoAnalysis;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.utils.Log;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -30,6 +38,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
@@ -58,6 +67,12 @@ public class MovieDetailActivity extends AppCompatActivity {
     TextView mDescriptionTextView;
 
     DbUtils db;
+    @BindView(R.id.collectLayout)
+    LinearLayout mCollectLayout;
+    @BindView(R.id.commentLayout)
+    LinearLayout mCommentLayout;
+    @BindView(R.id.shareLayout)
+    LinearLayout mShareLayout;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -174,4 +189,55 @@ public class MovieDetailActivity extends AppCompatActivity {
         }).start();
     }
 
+    @OnClick({R.id.collectLayout, R.id.commentLayout, R.id.shareLayout})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.collectLayout:
+                break;
+            case R.id.commentLayout:
+                break;
+            case R.id.shareLayout:
+                new ShareAction(MovieDetailActivity.this).setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.WEIXIN_FAVORITE, SHARE_MEDIA.MORE)
+                        .withTitle("猫眼影院")
+                        .withText(mMovie.getName())
+                        .withMedia(new UMImage(MovieDetailActivity.this, mMovie.getUrl()))
+                        .withTargetUrl("https://wsq.umeng.com/")
+                        .setCallback(umShareListener)
+                        .open();
+                break;
+        }
+    }
+
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Log.d("plat", "platform" + platform);
+            if (platform.name().equals("WEIXIN_FAVORITE")) {
+                Toast.makeText(MovieDetailActivity.this, platform + " 收藏成功啦", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MovieDetailActivity.this, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(MovieDetailActivity.this, platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            if (t != null) {
+                Log.d("throw", "throw:" + t.getMessage());
+            }
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(MovieDetailActivity.this, platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /** attention to this below ,must add this**/
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+        Log.d("result", "onActivityResult");
+    }
 }

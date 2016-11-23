@@ -46,13 +46,11 @@ dependencies {
     // BGABanner-Android
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'cn.bingoogolapple:bga-banner:2.0.9@aar'
-    // umeng wechat
-    compile files('libs/umeng_social_sdk.jar')
-    compile files('libs/SocialSDK_WeiXin_2.jar')
     // jiecao
     compile 'fm.jiecao:jiecaovideoplayer:4.8.3'
     compile project(':GAndroidCommon')
     //compile project(':jcvideoplayer-lib')
+
     // 极光推送
     compile files('libs/jpush-android-2.1.9.jar')
     // zxing
@@ -60,4 +58,10 @@ dependencies {
     compile files('libs/jsoup-1.8.3.jar')
     compile 'com.google.code.gson:gson:2.2.4'
     compile files('libs/xutils.jar')
+    // umeng wechat
+    compile files('libs/libammsdk.jar')
+    compile files('libs/SocialSDK_WeiXin_2.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_view.jar')
 }

@@ -97,6 +97,7 @@
         android:background="@color/app_background">
 
         <LinearLayout
+            android:id="@+id/collectLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -118,6 +119,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/commentLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -139,6 +141,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/shareLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
