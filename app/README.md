@@ -22,7 +22,7 @@ RxJava – Reactive Extensions for the JVM – a library for composing asynchron
 学习资料：
 https://github.com/rengwuxian/RxJavaSamples
 
-### [GreenDAO](https://github.com/greenrobot/greenDAO)
+### [GreenDAO](http://greenrobot.org/greendao/documentation)
 greenDAO is a light & fast ORM solution for Android that maps objects to SQLite databases. 
 使用的是GreenDAO 3
 

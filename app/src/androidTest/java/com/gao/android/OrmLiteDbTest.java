@@ -2,10 +2,10 @@ package com.gao.android;
 
 import android.test.AndroidTestCase;
 
-import com.gao.android.db.Article;
-import com.gao.android.db.ArticleDao;
-import com.gao.android.db.User;
-import com.gao.android.db.UserDao;
+import com.gao.android.db.ormdao.Article;
+import com.gao.android.db.ormdao.ArticleDao;
+import com.gao.android.db.ormdao.User;
+import com.gao.android.db.ormdao.UserDao;
 import com.orhanobut.logger.Logger;
 
 import java.util.Collection;

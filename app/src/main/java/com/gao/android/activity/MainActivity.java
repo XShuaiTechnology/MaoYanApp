@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.gao.android.R;
+import com.gao.android.db.greendao.NoteActivity;
 import com.gao.android.ottotest.LocationActivity;
 
 import butterknife.BindView;
@@ -25,8 +26,12 @@ public class MainActivity extends BaseActivity {
     Button ormlite;
     @BindView(R.id.otto)
     Button mOtto;
+    @BindView(R.id.greenDao)
+    Button mGreenDao;
 
-    /**记录上一次按下back按键的时间**/
+    /**
+     * 记录上一次按下back按键的时间
+     **/
     private long mLastEixtTime;
 
     @Override
@@ -37,7 +42,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick({R.id.glide, R.id.retrofit, R.id.logger,
-            R.id.adapter, R.id.ormlite, R.id.otto})
+            R.id.adapter, R.id.ormlite, R.id.otto, R.id.greenDao})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.glide:
@@ -57,6 +62,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.otto:
                 startActivity(new Intent(this, LocationActivity.class));
+                break;
+            case R.id.greenDao:
+                startActivity(new Intent(this, NoteActivity.class));
                 break;
         }
     }

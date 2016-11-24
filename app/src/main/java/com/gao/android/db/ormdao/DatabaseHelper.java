@@ -1,4 +1,4 @@
-package com.gao.android.db;
+package com.gao.android.db.ormdao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
