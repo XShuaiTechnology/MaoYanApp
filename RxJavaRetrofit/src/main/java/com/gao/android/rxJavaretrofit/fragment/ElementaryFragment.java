@@ -47,6 +47,15 @@ public class ElementaryFragment extends Fragment {
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
+    public static ElementaryFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        ElementaryFragment fragment = new ElementaryFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     private ZhuangbiListAdapter mZhuangbiListAdapter = new ZhuangbiListAdapter();
     private Subscription mSubscription;
 

@@ -49,6 +49,14 @@ public class CacheFragment extends Fragment {
     private Subscription mSubscription;
     private long mStartLoadingTime;
 
+    public static CacheFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        CacheFragment fragment = new CacheFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override

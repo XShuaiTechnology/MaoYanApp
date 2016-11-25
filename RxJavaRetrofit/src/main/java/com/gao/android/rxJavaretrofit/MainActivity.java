@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import com.gao.android.rxjavaretrofit.fragment.CacheFragment;
 import com.gao.android.rxjavaretrofit.fragment.ElementaryFragment;
 import com.gao.android.rxjavaretrofit.fragment.MultiRecyclerViewFragment;
+import com.gao.android.rxjavaretrofit.fragment.TestFragment;
 import com.gao.android.rxjavaretrofit.fragment.TokenAdvancedFragment;
 import com.gao.android.rxjavaretrofit.fragment.TokenFragmnet;
 import com.gao.android.rxjavaretrofit.fragment.MapFragment;
@@ -48,27 +49,29 @@ public class MainActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 6:
-                        return new ElementaryFragment();
+                        return ElementaryFragment.newInstance();
+                    case 7:
+                        return TestFragment.newInstance();
                     case 1:
-                        return new MapFragment();
+                        return MapFragment.newInstance();
                     case 2:
-                        return new ZipFragment();
+                        return ZipFragment.newInstance();
                     case 3:
-                        return new TokenFragmnet();
+                        return TokenFragmnet.newInstance();
                     case 4:
-                        return new TokenAdvancedFragment();
+                        return TokenAdvancedFragment.newInstance();
                     case 5:
-                        return new CacheFragment();
+                        return CacheFragment.newInstance();
                     case 0:
-                        return new MultiRecyclerViewFragment();
+                        return MultiRecyclerViewFragment.newInstance();
                     default:
-                        return new ElementaryFragment();
+                        return ElementaryFragment.newInstance();
                 }
             }
 
             @Override
             public int getCount() {
-                return 7;
+                return 8;
             }
 
             @Override
@@ -76,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 6:
                         return getString(R.string.title_elementary);
+                    case 7:
+                        return "测试";
                     case 1:
                         return getString(R.string.title_map);
                     case 2:

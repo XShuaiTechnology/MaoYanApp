@@ -50,6 +50,15 @@ public class MapFragment extends Fragment {
     private GankBeautyListAdapter mAdapter = new GankBeautyListAdapter();
     private Subscription mSubscription;
 
+    public static MapFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        MapFragment fragment = new MapFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     private Observer<List<GankBeauty>> mObserver = new Observer<List<GankBeauty>>() {
         @Override
         public void onCompleted() {

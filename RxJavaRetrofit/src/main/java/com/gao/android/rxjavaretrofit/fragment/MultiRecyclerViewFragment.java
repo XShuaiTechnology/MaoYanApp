@@ -53,6 +53,15 @@ public class MultiRecyclerViewFragment extends Fragment {
     //下部分
     public static List<WaitListBean.DataBean.ComingBean> mListData = new ArrayList<>();
 
+    public static MultiRecyclerViewFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        MultiRecyclerViewFragment fragment = new MultiRecyclerViewFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     private Observer<Boolean> mObserver = new Observer<Boolean>() {
 
         @Override

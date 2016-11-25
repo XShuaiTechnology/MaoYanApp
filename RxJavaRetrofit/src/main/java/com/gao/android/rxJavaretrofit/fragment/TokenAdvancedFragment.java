@@ -45,6 +45,15 @@ public class TokenAdvancedFragment extends Fragment {
     private boolean mIsTokenUpdated = false;
     private FakeToken mCachedFakeToken = new FakeToken(true);
 
+    public static TokenAdvancedFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        TokenAdvancedFragment fragment = new TokenAdvancedFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+    
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

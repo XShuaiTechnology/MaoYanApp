@@ -43,6 +43,15 @@ public class ZipFragment extends Fragment {
     private ItemListAdapter mAdapter = new ItemListAdapter();
     private Subscription mSubscription;
 
+    public static ZipFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        ZipFragment fragment = new ZipFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     private Observer<List<Item>> mObserver = new Observer<List<Item>>() {
         @Override
         public void onCompleted() {
