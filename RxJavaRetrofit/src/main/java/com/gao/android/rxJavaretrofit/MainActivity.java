@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.gao.android.rxjavaretrofit.fragment.CacheFragment;
 import com.gao.android.rxjavaretrofit.fragment.ElementaryFragment;
+import com.gao.android.rxjavaretrofit.fragment.LambdaFragment;
 import com.gao.android.rxjavaretrofit.fragment.MultiRecyclerViewFragment;
 import com.gao.android.rxjavaretrofit.fragment.TestFragment;
 import com.gao.android.rxjavaretrofit.fragment.TokenAdvancedFragment;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                         return ElementaryFragment.newInstance();
                     case 7:
                         return TestFragment.newInstance();
+                    case 8:
+                        return LambdaFragment.newInstance();
                     case 1:
                         return MapFragment.newInstance();
                     case 2:
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public int getCount() {
-                return 8;
+                return 9;
             }
 
             @Override
@@ -81,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                         return getString(R.string.title_elementary);
                     case 7:
                         return "测试";
+                    case 8:
+                        return "Lambda";
                     case 1:
                         return getString(R.string.title_map);
                     case 2:
