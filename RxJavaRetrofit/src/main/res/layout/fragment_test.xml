@@ -17,6 +17,12 @@
         android:text="flatmap"/>
 
     <Button
+        android:id="@+id/concatFirst"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="concatFirst multiple sources"/>
+
+    <Button
         android:id="@+id/from"
         android:layout_width="match_parent"
         android:layout_height="50dp"

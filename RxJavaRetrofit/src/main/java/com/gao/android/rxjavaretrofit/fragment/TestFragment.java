@@ -61,6 +61,8 @@ public class TestFragment extends Fragment {
     Button mRxViewClick;
     @BindView(R.id.rxTextView)
     EditText mRxTextView;
+    @BindView(R.id.concatFirst)
+    Button mConcatFirst;
 
     public static TestFragment newInstance() {
 
@@ -125,17 +127,17 @@ public class TestFragment extends Fragment {
     }
 
     private Observable<List<String>> makeApiCall(CharSequence charSequence) {
-        List<String> list  = new ArrayList();
+        List<String> list = new ArrayList();
         list.add("gao");
         list.add("cheng");
         list.add("quan");
-        return  Observable.just(list);
+        return Observable.just(list);
     }
 
     @OnClick({R.id.map, R.id.flatMap, R.id.from, R.id.filterTake,
             R.id.debounce, R.id.timer, R.id.interval, R.id.merge,
             R.id.distinctReduce, R.id.observableSubscriber,
-            R.id.rxTextView})
+            R.id.rxTextView, R.id.concatFirst})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.map:
@@ -171,7 +173,17 @@ public class TestFragment extends Fragment {
             case R.id.rxTextView:
                 rxTextView();
                 break;
+            case R.id.concatFirst:
+                concatFirst();
+                break;
         }
+    }
+
+    /**
+     * rxjava-multiple-sources-sample
+     */
+    private void concatFirst() {
+
     }
 
     private void rxViewClick() {
