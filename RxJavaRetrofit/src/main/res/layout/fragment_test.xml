@@ -50,4 +50,27 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="interval"/>
+
+    <Button
+        android:id="@+id/distinctReduce"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="distinct reduce"/>
+
+    <Button
+        android:id="@+id/observableSubscriber"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Observable Subscriber"/>
+
+    <Button
+        android:id="@+id/rxViewClick"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="rxViewClick"/>
+
+    <EditText
+        android:id="@+id/rxTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 </LinearLayout>
