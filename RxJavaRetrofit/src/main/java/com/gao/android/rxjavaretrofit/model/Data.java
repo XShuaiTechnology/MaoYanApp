@@ -10,7 +10,7 @@ package com.gao.android.rxjavaretrofit.model;
 public class Data {
     public static final long STALE_MS = 5 * 1000;// Data is stale after 5 seconds
 
-    private final String value;
+    public final String value;
 
     private final long timestamp;
 
