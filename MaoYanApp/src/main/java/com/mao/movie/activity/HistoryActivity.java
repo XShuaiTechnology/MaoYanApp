@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mao.movie.R;
@@ -34,8 +35,16 @@ public class HistoryActivity extends BaseActivity {
     RecyclerView mRecyclerView;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.selectAllTextView)
+    TextView mSelectAllTextView;
+    @BindView(R.id.deleteAllTextView)
+    TextView mDeleteAllTextView;
+    @BindView(R.id.unSelectAllTextView)
+    TextView mUnSelectAllTextView;
+    @BindView(R.id.selectOperationLayout)
+    LinearLayout mSelectOperationLayout;
 
-    private HistoryAdapter mHistoryAdapter = new HistoryAdapter();
+    private HistoryAdapter mAdapter = new HistoryAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +61,7 @@ public class HistoryActivity extends BaseActivity {
         mEditTextView.setVisibility(View.VISIBLE);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mHistoryAdapter);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void mockData() {
@@ -62,16 +71,35 @@ public class HistoryActivity extends BaseActivity {
         historyList.add(new History("破产姐妹花", "2014-222--2 34:34:34"));
         historyList.add(new History("地球百子", "2014-222--2 34:34:34"));
         historyList.add(new History("Nikita", "2014-222--2 34:34:34"));
-        mHistoryAdapter.setHistoryList(historyList);
+        mAdapter.setHistoryList(historyList);
     }
 
-    @OnClick({R.id.backButton, R.id.editTextView})
+    @OnClick({R.id.backButton, R.id.editTextView, R.id.unSelectAllTextView,
+            R.id.selectAllTextView, R.id.deleteAllTextView})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.backButton:
                 finish();
                 break;
             case R.id.editTextView:
+                if (mAdapter.isEditMode()) {
+                    mEditTextView.setText("编辑");
+                    mAdapter.changeEditMode(false);
+                    mSelectOperationLayout.setVisibility(View.GONE);
+                } else {
+                    mEditTextView.setText("取消");
+                    mAdapter.changeEditMode(true);
+                    mSelectOperationLayout.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.unSelectAllTextView:
+                mAdapter.changeSelectAllMode(false);
+                break;
+            case R.id.selectAllTextView:
+                mAdapter.changeSelectAllMode(true);
+                break;
+            case R.id.deleteAllTextView:
+                mAdapter.deleteAll();
                 break;
         }
     }

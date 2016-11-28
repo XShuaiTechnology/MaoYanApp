@@ -1,14 +1,19 @@
 package com.mao.movie.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.gao.android.util.ListUtils;
 import com.mao.movie.R;
 import com.mao.movie.model.History;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -20,6 +25,14 @@ import butterknife.ButterKnife;
  */
 public class HistoryAdapter extends RecyclerView.Adapter {
     private List<History> mHistoryList;
+    /**
+     * 是否是编辑模式
+     */
+    private boolean mIsEditMode = false;
+    /**
+     * 选中的位置数组
+     */
+    SparseBooleanArray mSelectedPositions = new SparseBooleanArray();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -28,10 +41,34 @@ public class HistoryAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        HistoryViewHolder searchHistoryViewHolder = (HistoryViewHolder) holder;
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        HistoryViewHolder viewHolder = (HistoryViewHolder) holder;
         History history = mHistoryList.get(position);
-        searchHistoryViewHolder.mHistoryNameTextView.setText(history.getName());
+        viewHolder.mHistoryNameTextView.setText(history.getName());
+        viewHolder.mCheckBox.setVisibility(mIsEditMode ? View.VISIBLE : View.GONE);
+        if (mIsEditMode) {
+            viewHolder.mCheckBox.setChecked(isItemChecked(position));
+        }
+
+        viewHolder.mCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isItemChecked(position)) {
+                    setItemChecked(position, false);
+                } else {
+                    setItemChecked(position, true);
+                }
+                notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void setItemChecked(int position, boolean isChecked) {
+        mSelectedPositions.put(position, isChecked);
+    }
+
+    private boolean isItemChecked(int position) {
+        return mSelectedPositions.get(position);
     }
 
     @Override
@@ -40,8 +77,52 @@ public class HistoryAdapter extends RecyclerView.Adapter {
     }
 
     public void setHistoryList(List<History> historyList) {
+        if (ListUtils.isEmpty(historyList)) {
+            notifyDataSetChanged();
+            return;
+        }
         this.mHistoryList = historyList;
+        mSelectedPositions.clear();
+        for (int i = 0; i < historyList.size(); i++) {
+            setItemChecked(i, false);
+        }
         notifyDataSetChanged();
+    }
+
+    /**
+     * 切换编辑模式
+     */
+    public void changeEditMode(boolean mode) {
+        mIsEditMode = mode;
+        notifyDataSetChanged();
+    }
+
+    public boolean isEditMode() {
+        return mIsEditMode;
+    }
+
+    /**
+     * @param isSelectAll true 全选，false 反选
+     */
+    public void changeSelectAllMode(boolean isSelectAll) {
+        for (int i = 0; i < mSelectedPositions.size(); i++) {
+            setItemChecked(i, isSelectAll);
+        }
+        notifyDataSetChanged();
+    }
+
+    /**
+     * 删除选中的所有
+     */
+    public void deleteAll() {
+        List<History> removeList = new ArrayList<>();
+        for (int i = 0; i < mSelectedPositions.size(); i++) {
+            if (isItemChecked(i)) {
+                removeList.add(mHistoryList.get(i));
+            }
+        }
+        mHistoryList.removeAll(removeList);
+        setHistoryList(mHistoryList);
     }
 
     static class HistoryViewHolder extends RecyclerView.ViewHolder {
@@ -49,6 +130,8 @@ public class HistoryAdapter extends RecyclerView.Adapter {
         TextView mHistoryNameTextView;
         @BindView(R.id.lastWatchTextView)
         TextView mLastWatchTextView;
+        @BindView(R.id.checkBox)
+        CheckBox mCheckBox;
 
         HistoryViewHolder(View view) {
             super(view);

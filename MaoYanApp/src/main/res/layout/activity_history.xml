@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/app_light_background"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/app_light_background"
+    >
 
-    <include layout="@layout/layout_header_user"/>
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header_user"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/header">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -18,4 +21,39 @@
             android:layout_height="match_parent"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/selectOperationLayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_background">
+
+        <TextView
+            android:id="@+id/selectAllTextView"
+            style="@style/font_16_color_white"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="全选"/>
+
+        <TextView
+            android:id="@+id/unSelectAllTextView"
+            style="@style/font_16_color_white"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="反选"/>
+
+        <TextView
+            android:id="@+id/deleteAllTextView"
+            style="@style/font_16_color_white"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="删除"/>
+    </LinearLayout>
+</RelativeLayout>

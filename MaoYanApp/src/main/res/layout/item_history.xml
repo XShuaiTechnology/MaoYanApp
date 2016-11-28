@@ -4,16 +4,18 @@
               android:layout_height="60dp"
               android:background="@color/app_light_background"
               android:gravity="center_vertical"
-              android:orientation="vertical">
+              android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/historyNameTextView"
@@ -23,15 +25,14 @@
             android:gravity="center_vertical"
             android:paddingLeft="3dp"
             android:text="无间道"/>
+
+        <TextView
+            android:id="@+id/lastWatchTextView"
+            style="@style/font_14_color_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:text="上次观看时间2016-12-23 01：2:23"/>
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/lastWatchTextView"
-        style="@style/font_14_color_white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingTop="2dp"
-        android:text="上次观看时间2016-12-23 01：2:23"/>
 </LinearLayout>
