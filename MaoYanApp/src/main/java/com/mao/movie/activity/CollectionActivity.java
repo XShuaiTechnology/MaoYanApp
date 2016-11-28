@@ -36,6 +36,12 @@ public class CollectionActivity extends AppCompatActivity {
     ViewPager mViewPager;
 
     private CollectionFragmentPagerAdapter mAdapter;
+    /**
+     * 当前是否是编辑状态
+     */
+    private boolean mIsEditMode;
+    private CollectionMovieFragment mCollectionMovieFragment;
+    private CollectionArticleFragment mCollectionArticleFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,9 @@ public class CollectionActivity extends AppCompatActivity {
 
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.setCurrentItem(1);
+
+        mCollectionMovieFragment = (CollectionMovieFragment) mAdapter.getItem(0);
+        mCollectionArticleFragment = (CollectionArticleFragment) mAdapter.getItem(1);
     }
 
     @OnClick({R.id.backButton, R.id.editTextView})
@@ -67,6 +76,17 @@ public class CollectionActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.editTextView:
+                if (mIsEditMode) {
+                    mEditTextView.setText("编辑");
+                    mCollectionMovieFragment.changeEditMode(false);
+                    mCollectionArticleFragment.changeEditMode(false);
+                    mIsEditMode = false;
+                } else {
+                    mEditTextView.setText("取消");
+                    mCollectionMovieFragment.changeEditMode(true);
+                    mCollectionArticleFragment.changeEditMode(true);
+                    mIsEditMode = true;
+                }
                 break;
         }
     }
@@ -82,11 +102,11 @@ public class CollectionActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new CollectionMovieFragment();
+                    return CollectionMovieFragment.newInstance();
                 case 1:
-                    return new CollectionArticleFragment();
+                    return CollectionArticleFragment.newInstance();
                 default:
-                    return new CollectionMovieFragment();
+                    return CollectionMovieFragment.newInstance();
             }
         }
 

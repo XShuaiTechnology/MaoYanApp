@@ -1,15 +1,19 @@
 package com.mao.movie.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gao.android.util.ListUtils;
 import com.mao.movie.R;
 import com.mao.movie.model.Article;
+import com.mao.movie.model.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -20,7 +24,16 @@ import butterknife.ButterKnife;
  * 我的收藏-视频
  */
 public class CollectionArticleAdapter extends RecyclerView.Adapter {
-    private List<Article> mArticleList;
+    private List<Article> mDataList;
+
+    /**
+     * 是否是编辑模式
+     */
+    private boolean mIsEditMode = false;
+    /**
+     * 选中的位置数组
+     */
+    SparseBooleanArray mSelectedPositions = new SparseBooleanArray();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -31,19 +44,71 @@ public class CollectionArticleAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         CollectionArticleViewHolder collectionMovieViewHolder = (CollectionArticleViewHolder) holder;
-        Article article = mArticleList.get(position);
+        Article article = mDataList.get(position);
 
         collectionMovieViewHolder.mTitleTextView.setText(article.getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return mArticleList == null ? 0 : mArticleList.size();
+        return mDataList == null ? 0 : mDataList.size();
     }
 
-    public void setArticleList(List<Article> articleList) {
-        this.mArticleList = articleList;
+    private void setItemChecked(int position, boolean isChecked) {
+        mSelectedPositions.put(position, isChecked);
+    }
+
+    private boolean isItemChecked(int position) {
+        return mSelectedPositions.get(position);
+    }
+
+    public void setDataList(List<Article> dataList) {
+        if (ListUtils.isEmpty(dataList)) {
+            notifyDataSetChanged();
+            return;
+        }
+        this.mDataList = dataList;
+        mSelectedPositions.clear();
+        for (int i = 0; i < dataList.size(); i++) {
+            setItemChecked(i, false);
+        }
         notifyDataSetChanged();
+    }
+
+    /**
+     * 切换编辑模式
+     */
+    public void changeEditMode(boolean mode) {
+        mIsEditMode = mode;
+        notifyDataSetChanged();
+    }
+
+    public boolean isEditMode() {
+        return mIsEditMode;
+    }
+
+    /**
+     * @param isSelectAll true 全选，false 反选
+     */
+    public void changeSelectAllMode(boolean isSelectAll) {
+        for (int i = 0; i < mSelectedPositions.size(); i++) {
+            setItemChecked(i, isSelectAll);
+        }
+        notifyDataSetChanged();
+    }
+
+    /**
+     * 删除选中的所有
+     */
+    public void deleteAll() {
+        List<Article> removeList = new ArrayList<>();
+        for (int i = 0; i < mSelectedPositions.size(); i++) {
+            if (isItemChecked(i)) {
+                removeList.add(mDataList.get(i));
+            }
+        }
+        mDataList.removeAll(removeList);
+        setDataList(mDataList);
     }
 
     static class CollectionArticleViewHolder extends RecyclerView.ViewHolder {

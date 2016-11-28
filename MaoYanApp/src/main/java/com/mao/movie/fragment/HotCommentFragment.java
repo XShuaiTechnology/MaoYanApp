@@ -68,6 +68,6 @@ public class HotCommentFragment extends Fragment {
         articleList.add(new Article("苍井空用一部惊辣片诠释了自己的演技"));
         articleList.add(new Article("苍井空用一部惊辣片诠释了自己的演技"));
         articleList.add(new Article("苍井空用一部惊辣片诠释了自己的演技"));
-        mAdapter.setArticleList(articleList);
+        mAdapter.setDataList(articleList);
     }
 }

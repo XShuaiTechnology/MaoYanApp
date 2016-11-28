@@ -67,7 +67,7 @@ public class EditorRecommendActivity extends AppCompatActivity {
         movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
         movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
         movieList.add(new Movie("寒战", "9.9", "高成全 刘德华", "高成全", "2312-23-12 美国"));
-        mAdapter.setMovieList(movieList);
+        mAdapter.setDataList(movieList);
     }
 
     @OnClick(R.id.backButton)

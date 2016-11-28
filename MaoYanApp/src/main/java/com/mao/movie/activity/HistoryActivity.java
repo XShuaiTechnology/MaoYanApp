@@ -71,7 +71,7 @@ public class HistoryActivity extends BaseActivity {
         historyList.add(new History("破产姐妹花", "2014-222--2 34:34:34"));
         historyList.add(new History("地球百子", "2014-222--2 34:34:34"));
         historyList.add(new History("Nikita", "2014-222--2 34:34:34"));
-        mAdapter.setHistoryList(historyList);
+        mAdapter.setDataList(historyList);
     }
 
     @OnClick({R.id.backButton, R.id.editTextView, R.id.unSelectAllTextView,

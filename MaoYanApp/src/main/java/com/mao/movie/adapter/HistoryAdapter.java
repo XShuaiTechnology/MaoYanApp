@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.gao.android.util.ListUtils;
@@ -24,7 +23,7 @@ import butterknife.ButterKnife;
  * 观看历史
  */
 public class HistoryAdapter extends RecyclerView.Adapter {
-    private List<History> mHistoryList;
+    private List<History> mDataList;
     /**
      * 是否是编辑模式
      */
@@ -43,7 +42,7 @@ public class HistoryAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         HistoryViewHolder viewHolder = (HistoryViewHolder) holder;
-        History history = mHistoryList.get(position);
+        History history = mDataList.get(position);
         viewHolder.mHistoryNameTextView.setText(history.getName());
         viewHolder.mCheckBox.setVisibility(mIsEditMode ? View.VISIBLE : View.GONE);
         if (mIsEditMode) {
@@ -63,6 +62,11 @@ public class HistoryAdapter extends RecyclerView.Adapter {
         });
     }
 
+    @Override
+    public int getItemCount() {
+        return mDataList == null ? 0 : mDataList.size();
+    }
+
     private void setItemChecked(int position, boolean isChecked) {
         mSelectedPositions.put(position, isChecked);
     }
@@ -71,19 +75,14 @@ public class HistoryAdapter extends RecyclerView.Adapter {
         return mSelectedPositions.get(position);
     }
 
-    @Override
-    public int getItemCount() {
-        return mHistoryList == null ? 0 : mHistoryList.size();
-    }
-
-    public void setHistoryList(List<History> historyList) {
-        if (ListUtils.isEmpty(historyList)) {
+    public void setDataList(List<History> dataList) {
+        if (ListUtils.isEmpty(dataList)) {
             notifyDataSetChanged();
             return;
         }
-        this.mHistoryList = historyList;
+        this.mDataList = dataList;
         mSelectedPositions.clear();
-        for (int i = 0; i < historyList.size(); i++) {
+        for (int i = 0; i < dataList.size(); i++) {
             setItemChecked(i, false);
         }
         notifyDataSetChanged();
@@ -118,11 +117,11 @@ public class HistoryAdapter extends RecyclerView.Adapter {
         List<History> removeList = new ArrayList<>();
         for (int i = 0; i < mSelectedPositions.size(); i++) {
             if (isItemChecked(i)) {
-                removeList.add(mHistoryList.get(i));
+                removeList.add(mDataList.get(i));
             }
         }
-        mHistoryList.removeAll(removeList);
-        setHistoryList(mHistoryList);
+        mDataList.removeAll(removeList);
+        setDataList(mDataList);
     }
 
     static class HistoryViewHolder extends RecyclerView.ViewHolder {
