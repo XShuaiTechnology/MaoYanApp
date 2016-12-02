@@ -450,7 +450,7 @@ public class TestFragment extends Fragment {
         query().flatMap(new Func1<List<String>, Observable<String>>() {
             @Override
             public Observable<String> call(List<String> strings) {
-                Logger.d(strings);//[Java, Android, C, PHP]
+                Logger.d(strings);//[Java, Android, C, PHP] just作为一个整体输出
                 return Observable.from(strings);
             }
         }).flatMap(new Func1<String, Observable<String>>() {
@@ -477,7 +477,7 @@ public class TestFragment extends Fragment {
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String s) {
-                        Logger.d(s);
+                        Logger.d(s);// from是一个一个的输出,和just作为一个整体输出是不一样的。
                     }
                 });
     }

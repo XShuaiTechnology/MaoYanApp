@@ -4,12 +4,14 @@ package com.mao.movie.model;
  * Created by GaoMatrix on 2016/10/27.
  */
 public class Movie {
+    private String url;
     private String imageUrl;
     private String title;
     private String rating;
     private String directors;
     private String actors;
     private String time;
+    private String description;
 
     public Movie(String imageUrl, String title, String rating, String directors, String actors, String time) {
         this.imageUrl = imageUrl;
